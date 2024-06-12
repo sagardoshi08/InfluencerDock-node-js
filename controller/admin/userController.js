@@ -196,31 +196,6 @@ const softDeleteManyUser = async (req, res) => {
   }
 };
 /**
- * @description : create multiple documents of User in mongodb collection.
- * @param {object} req : request including body for creating documents.
- * @param {object} res : response of created documents.
- * @return {object} : created Users. {status, message, data}
- */
-const bulkInsertUser = async (req, res) => {
-  try {
-    const dataToCreate = req.body && req.body.data ? [...req.body.data] : [];
-    for (let i = 0; i < dataToCreate.length; i++) {
-      dataToCreate[i].addedBy = req.user.id;
-    }
-    const result = await dbService.bulkInsert(User, dataToCreate);
-    return res.success({ data: result });
-  } catch (error) {
-    if (error.name === 'ValidationError') {
-      return res.validationError({ message: error.message });
-    }
-    if (error.code && error.code == 11000) {
-      return res.validationError({ message: error.message });
-    }
-    return res.internalServerError({ message: error.message });
-  }
-};
-
-/**
  * @description : update multiple records of User with data by filter.
  * @param {object} req : request including filter and data in request body.
  * @param {object} res : response of updated Users.
@@ -334,7 +309,6 @@ module.exports = {
   partialUpdateUser,
   softDeleteUser,
   softDeleteManyUser,
-  bulkInsertUser,
   bulkUpdateUser,
   changePassword,
   updateProfile,

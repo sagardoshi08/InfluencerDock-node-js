@@ -1,7 +1,7 @@
 {
   "info": {
     "name": "InfluencerDock",
-    "_postman_id": "dd3391bd-4a2d-485f-8c98-a3865a355cd2",
+    "_postman_id": "8747e5cd-34ec-4a04-8345-d4b767e19476",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -9,6 +9,900 @@
       "name": "admin",
       "description": "admin APIs",
       "item": [
+        {
+          "name": "contact",
+          "description": "contact Model APIs",
+          "item": [
+            {
+              "name": "getcontact",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/contact/:id",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "contact",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "description": "",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{token}}"
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "getcontact_response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/contact/:id",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "contact",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"first_name\": \"Salad\",\n    \"last_name\": \"Mountains\",\n    \"email\": \"Mckayla49@hotmail.com\",\n    \"language\": \"metrics\",\n    \"message\": \"transmit\",\n    \"id\": \"6669a6de269fe4b4e1988a6c\",\n    \"createdAt\": \"2025-01-06T16:28:44.599Z\",\n    \"updatedAt\": \"2024-08-19T20:50:34.767Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "addcontact",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/contact/create",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "contact",
+                    "create"
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"Salad\",\n  \"last_name\": \"Mountains\",\n  \"email\": \"Mckayla49@hotmail.com\",\n  \"language\": \"metrics\",\n  \"message\": \"transmit\"\n}"
+                },
+                "description": "",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{token}}"
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "addcontact_response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/contact/create",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "contact",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"first_name\": \"Salad\",\n    \"last_name\": \"Mountains\",\n    \"email\": \"Mckayla49@hotmail.com\",\n    \"language\": \"metrics\",\n    \"message\": \"transmit\",\n    \"id\": \"6669a6de269fe4b4e1988a6a\",\n    \"createdAt\": \"2024-12-06T18:12:22.068Z\",\n    \"updatedAt\": \"2024-07-10T23:46:59.176Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "findAllcontact",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/contact/list",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "contact",
+                    "list"
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": {},\n  \"options\": {\n    \"select\": [\n      \"field 1\",\n      \"field 2\"\n    ],\n    \"sort\": \"\",\n    \"populate\": \"\",\n    \"offset\": 0,\n    \"page\": 1,\n    \"limit\": 10,\n    \"pagination\": true,\n    \"options\": {}\n  },\n  \"isCountOnly\": false\n}"
+                },
+                "description": "",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{token}}"
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "findAllcontact_response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/contact/list",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "contact",
+                        "list"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"first_name\": \"Salad\",\n        \"last_name\": \"Mountains\",\n        \"email\": \"Mckayla49@hotmail.com\",\n        \"language\": \"metrics\",\n        \"message\": \"transmit\",\n        \"id\": \"6669a6de269fe4b4e1988a6b\",\n        \"createdAt\": \"2025-03-27T08:50:45.808Z\",\n        \"updatedAt\": \"2025-06-12T08:13:22.039Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "getcontactCount",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/contact/count",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "contact",
+                    "count"
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"where\": {\n    \"isActive\": true\n  }\n}"
+                },
+                "description": "",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{token}}"
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "getcontactCount_response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/contact/count",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "contact",
+                        "count"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"totalRecords\": 10\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "deleteManycontact",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/contact/deleteMany",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "contact",
+                    "deleteMany"
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"isWarning\": true,\n  \"ids\": [\n    \":id\"\n  ]\n}"
+                },
+                "description": "",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{token}}"
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "deleteManycontact_response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/contact/deleteMany",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "contact",
+                        "deleteMany"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"n\": 2,\n    \"ok\": 1,\n    \"deletedCount\": 2\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "updatecontact",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/contact/update/:id",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "contact",
+                    "update",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"Salad\",\n  \"last_name\": \"Mountains\",\n  \"email\": \"Mckayla49@hotmail.com\",\n  \"language\": \"metrics\",\n  \"message\": \"transmit\"\n}"
+                },
+                "description": "",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{token}}"
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "updatecontact_response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/contact/update/:id",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "contact",
+                        "update",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"first_name\": \"Salad\",\n    \"last_name\": \"Mountains\",\n    \"email\": \"Mckayla49@hotmail.com\",\n    \"language\": \"metrics\",\n    \"message\": \"transmit\",\n    \"id\": \"6669a6de269fe4b4e1988a6d\",\n    \"createdAt\": \"2025-03-16T11:17:38.485Z\",\n    \"updatedAt\": \"2025-01-29T03:21:56.094Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "partialupdatecontact",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/contact/partial-update/:id",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "contact",
+                    "partial-update",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"isActive\": true,\n  \"isDeleted\": false\n}"
+                },
+                "description": "",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{token}}"
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "partialupdatecontact_response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/contact/partial-update/:id",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "contact",
+                        "partial-update",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"first_name\": \"Salad\",\n    \"last_name\": \"Mountains\",\n    \"email\": \"Mckayla49@hotmail.com\",\n    \"language\": \"metrics\",\n    \"message\": \"transmit\",\n    \"id\": \"6669a6de269fe4b4e1988a6e\",\n    \"createdAt\": \"2024-06-27T14:35:53.718Z\",\n    \"updatedAt\": \"2024-09-30T00:54:10.603Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "softDeletecontact",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/contact/softDelete/:id",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "contact",
+                    "softDelete",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "description": "",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{token}}"
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "softDeletecontact_response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/contact/softDelete/:id",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "contact",
+                        "softDelete",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"acknowledged\": true,\n    \"modifiedCount\": 1,\n    \"upsertedId\": null,\n    \"upsertedCount\": 0,\n    \"matchedCount\": 1\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "softDeleteManycontact",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/contact/softDeleteMany",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "contact",
+                    "softDeleteMany"
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \":id\"\n  ]\n}"
+                },
+                "description": "",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{token}}"
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "softDeleteManycontact_response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/contact/softDeleteMany",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "contact",
+                        "softDeleteMany"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"acknowledged\": true,\n    \"modifiedCount\": 1,\n    \"upsertedId\": null,\n    \"upsertedCount\": 0,\n    \"matchedCount\": 1\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "updateBulkcontact",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/contact/updateBulk",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "contact",
+                    "updateBulk"
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filter\": {\n    \"isActive\": true\n  },\n  \"data\": {\n    \"isDeleted\": false\n  }\n}"
+                },
+                "description": "",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{token}}"
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "updateBulkcontact_response",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/contact/updateBulk",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "contact",
+                        "updateBulk"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"acknowledged\": true,\n    \"modifiedCount\": 59,\n    \"upsertedId\": null,\n    \"upsertedCount\": 0,\n    \"matchedCount\": 59\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            },
+            {
+              "name": "deletecontact",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/contact/delete/:id",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "contact",
+                    "delete",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"isWarning\": true\n}"
+                },
+                "description": "",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": {
+                    "token": "{{token}}"
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "deletecontact_response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/contact/delete/:id",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "contact",
+                        "delete",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"n\": 1,\n    \"ok\": 1,\n    \"deletedCount\": 1\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            }
+          ]
+        },
+        {
+          "name": "File Upload",
+          "description": "Upload Files",
+          "item": [
+            {
+              "name": "File upload in admin",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/admin/upload",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "upload"
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "file[]",
+                      "type": "file",
+                      "description": "Select file to upload"
+                    },
+                    {
+                      "key": "file[]",
+                      "type": "file",
+                      "disabled": true,
+                      "description": "Select Another file to upload multiple files"
+                    },
+                    {
+                      "key": "folder",
+                      "value": "Enter foldername",
+                      "type": "text",
+                      "disabled": true,
+                      "description": "Optional, enable to upload file to specific folder"
+                    },
+                    {
+                      "key": "fileName",
+                      "value": "Enter fileName",
+                      "type": "text",
+                      "disabled": true,
+                      "description": "Optional, enable to give Specific file name to uploaded File"
+                    }
+                  ],
+                  "raw": "{}"
+                },
+                "description": "",
+                "auth": {}
+              },
+              "response": [
+                {
+                  "name": "File upload in admin",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/admin/upload",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "upload"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"status\": true,\n      \"path\": \"path to download file\"\n    }\n  ]\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            }
+          ]
+        },
         {
           "name": "user",
           "description": "user Model APIs",
@@ -78,7 +972,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7a8\",\n    \"createdAt\": \"2024-08-17T22:54:01.588Z\",\n    \"updatedAt\": \"2025-05-31T10:55:59.294Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a74\",\n    \"createdAt\": \"2024-12-09T04:08:25.427Z\",\n    \"updatedAt\": \"2025-04-28T14:04:30.404Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -114,7 +1008,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"username\": \"Bobbie_Feest32\",\n  \"password\": \"Xfz18EBh39lDlDH\",\n  \"email\": \"Quinten14@hotmail.com\",\n  \"name\": \"Whitney Ruecker\",\n  \"role\": 1\n}"
+                  "raw": "{\n  \"username\": \"Urban_Jacobson2\",\n  \"password\": \"NfVaFSLqeAKyZBk\",\n  \"email\": \"Hillary5@hotmail.com\",\n  \"name\": \"Belinda Jakubowski\",\n  \"role\": 1\n}"
                 },
                 "description": "",
                 "auth": {
@@ -145,7 +1039,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7a6\",\n    \"createdAt\": \"2025-03-29T02:54:42.590Z\",\n    \"updatedAt\": \"2025-03-10T08:21:27.170Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a72\",\n    \"createdAt\": \"2024-10-31T20:23:56.851Z\",\n    \"updatedAt\": \"2024-12-02T21:51:21.970Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -212,7 +1106,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"username\": \"Bobbie_Feest32\",\n        \"password\": \"Xfz18EBh39lDlDH\",\n        \"email\": \"Quinten14@hotmail.com\",\n        \"name\": \"Whitney Ruecker\",\n        \"role\": 1,\n        \"id\": \"66695408394cf01b1f82e7a7\",\n        \"createdAt\": \"2025-05-21T11:26:31.675Z\",\n        \"updatedAt\": \"2025-02-05T21:56:40.486Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"username\": \"Urban_Jacobson2\",\n        \"password\": \"NfVaFSLqeAKyZBk\",\n        \"email\": \"Hillary5@hotmail.com\",\n        \"name\": \"Belinda Jakubowski\",\n        \"role\": 1,\n        \"id\": \"6669a6de269fe4b4e1988a73\",\n        \"createdAt\": \"2025-03-10T06:17:34.769Z\",\n        \"updatedAt\": \"2024-09-03T23:28:10.097Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -292,73 +1186,6 @@
               "_postman_isSubFolder": true
             },
             {
-              "name": "insertBulkuser",
-              "request": {
-                "url": {
-                  "raw": "{{url}}/admin/user/addBulk",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "user",
-                    "addBulk"
-                  ]
-                },
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"data\": [\n    {\n      \"username\": \"Bobbie_Feest32\",\n      \"password\": \"Xfz18EBh39lDlDH\",\n      \"email\": \"Quinten14@hotmail.com\",\n      \"name\": \"Whitney Ruecker\",\n      \"role\": 1\n    }\n  ]\n}"
-                },
-                "description": "",
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{token}}"
-                  }
-                }
-              },
-              "response": [
-                {
-                  "name": "insertBulkuser_response",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [],
-                    "url": {
-                      "raw": "{{url}}/admin/user/addBulk",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "admin",
-                        "user",
-                        "addBulk"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"username\": \"Bobbie_Feest32\",\n      \"password\": \"Xfz18EBh39lDlDH\",\n      \"email\": \"Quinten14@hotmail.com\",\n      \"name\": \"Whitney Ruecker\",\n      \"role\": 1,\n      \"id\": \"66695408394cf01b1f82e7ab\",\n      \"createdAt\": \"2025-04-06T15:51:09.880Z\",\n      \"updatedAt\": \"2024-07-20T17:18:23.579Z\",\n      \"isDeleted\": false,\n      \"isActive\": true\n    }\n  ]\n}",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json"
-                    }
-                  ],
-                  "cookie": []
-                }
-              ],
-              "_postman_isSubFolder": true
-            },
-            {
               "name": "updateuser",
               "request": {
                 "url": {
@@ -388,7 +1215,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"username\": \"Bobbie_Feest32\",\n  \"password\": \"Xfz18EBh39lDlDH\",\n  \"email\": \"Quinten14@hotmail.com\",\n  \"name\": \"Whitney Ruecker\",\n  \"role\": 1\n}"
+                  "raw": "{\n  \"username\": \"Urban_Jacobson2\",\n  \"password\": \"NfVaFSLqeAKyZBk\",\n  \"email\": \"Hillary5@hotmail.com\",\n  \"name\": \"Belinda Jakubowski\",\n  \"role\": 1\n}"
                 },
                 "description": "",
                 "auth": {
@@ -425,7 +1252,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7a9\",\n    \"createdAt\": \"2024-07-15T03:58:37.841Z\",\n    \"updatedAt\": \"2025-01-31T10:19:21.026Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a75\",\n    \"createdAt\": \"2025-03-05T18:41:57.297Z\",\n    \"updatedAt\": \"2024-10-11T10:56:38.076Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -504,7 +1331,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7aa\",\n    \"createdAt\": \"2024-09-30T13:58:26.589Z\",\n    \"updatedAt\": \"2025-01-30T14:28:42.148Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a76\",\n    \"createdAt\": \"2024-10-24T06:48:15.196Z\",\n    \"updatedAt\": \"2024-11-02T14:39:08.351Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -785,7 +1612,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Login Successful\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7ad\",\n    \"loginRetryLimit\": 0,\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWRlZDVjMGFjMjAxMmFjMDI4ODkxZiIsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MjkzNTEyNzAsImV4cCI6MTYyOTk1MTI3MH0.BJ-WKjNYeFDQ4pn8kfli5gwn6GLz_c3voFht20Agj9k\",\n    \"createdAt\": \"2024-10-28T02:55:58.691Z\",\n    \"updatedAt\": \"2025-02-24T18:55:29.985Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Login Successful\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a78\",\n    \"loginRetryLimit\": 0,\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWRlZDVjMGFjMjAxMmFjMDI4ODkxZiIsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MjkzNTEyNzAsImV4cCI6MTYyOTk1MTI3MH0.BJ-WKjNYeFDQ4pn8kfli5gwn6GLz_c3voFht20Agj9k\",\n    \"createdAt\": \"2025-04-07T08:34:29.849Z\",\n    \"updatedAt\": \"2024-11-21T20:13:21.426Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -821,7 +1648,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"username\": \"Bobbie_Feest32\",\n  \"password\": \"Xfz18EBh39lDlDH\",\n  \"email\": \"Quinten14@hotmail.com\",\n  \"name\": \"Whitney Ruecker\",\n  \"role\": 1\n}"
+                  "raw": "{\n  \"username\": \"Urban_Jacobson2\",\n  \"password\": \"NfVaFSLqeAKyZBk\",\n  \"email\": \"Hillary5@hotmail.com\",\n  \"name\": \"Belinda Jakubowski\",\n  \"role\": 1\n}"
                 },
                 "description": "",
                 "auth": {}
@@ -847,7 +1674,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7ad\",\n    \"loginRetryLimit\": 0,\n    \"createdAt\": \"2025-01-14T07:04:37.831Z\",\n    \"updatedAt\": \"2025-03-20T14:42:18.222Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a78\",\n    \"loginRetryLimit\": 0,\n    \"createdAt\": \"2024-10-18T05:49:33.478Z\",\n    \"updatedAt\": \"2024-09-12T13:33:12.679Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -1131,99 +1958,6 @@
           ]
         },
         {
-          "name": "File Upload",
-          "description": "Upload Files",
-          "item": [
-            {
-              "name": "File upload in admin",
-              "request": {
-                "url": {
-                  "raw": "{{url}}/admin/upload",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "admin",
-                    "upload"
-                  ]
-                },
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "multipart/form-data",
-                    "description": ""
-                  }
-                ],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "file[]",
-                      "type": "file",
-                      "description": "Select file to upload"
-                    },
-                    {
-                      "key": "file[]",
-                      "type": "file",
-                      "disabled": true,
-                      "description": "Select Another file to upload multiple files"
-                    },
-                    {
-                      "key": "folder",
-                      "value": "Enter foldername",
-                      "type": "text",
-                      "disabled": true,
-                      "description": "Optional, enable to upload file to specific folder"
-                    },
-                    {
-                      "key": "fileName",
-                      "value": "Enter fileName",
-                      "type": "text",
-                      "disabled": true,
-                      "description": "Optional, enable to give Specific file name to uploaded File"
-                    }
-                  ],
-                  "raw": "{}"
-                },
-                "description": "",
-                "auth": {}
-              },
-              "response": [
-                {
-                  "name": "File upload in admin",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [],
-                    "url": {
-                      "raw": "{{url}}/admin/upload",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "admin",
-                        "upload"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"status\": true,\n      \"path\": \"path to download file\"\n    }\n  ]\n}",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json"
-                    }
-                  ],
-                  "cookie": []
-                }
-              ],
-              "_postman_isSubFolder": true
-            }
-          ]
-        },
-        {
           "name": "role",
           "description": "role Model APIs",
           "item": [
@@ -1292,7 +2026,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"name\": \"Cody Schowalter\",\n    \"code\": \"connect\",\n    \"weight\": 20,\n    \"id\": \"66695408394cf01b1f82e7bc\",\n    \"createdAt\": \"2024-10-18T03:00:05.531Z\",\n    \"updatedAt\": \"2024-08-07T18:16:50.616Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"name\": \"Roberta Lehner\",\n    \"code\": \"Representative\",\n    \"weight\": 182,\n    \"id\": \"6669a6de269fe4b4e1988a85\",\n    \"createdAt\": \"2025-02-13T10:13:20.881Z\",\n    \"updatedAt\": \"2025-03-19T19:19:04.902Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -1328,7 +2062,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"Cody Schowalter\",\n  \"code\": \"connect\",\n  \"weight\": 20\n}"
+                  "raw": "{\n  \"name\": \"Roberta Lehner\",\n  \"code\": \"Representative\",\n  \"weight\": 182\n}"
                 },
                 "description": "",
                 "auth": {
@@ -1359,7 +2093,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"name\": \"Cody Schowalter\",\n    \"code\": \"connect\",\n    \"weight\": 20,\n    \"id\": \"66695408394cf01b1f82e7b9\",\n    \"createdAt\": \"2025-01-12T22:38:30.086Z\",\n    \"updatedAt\": \"2025-01-04T18:49:09.136Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"name\": \"Roberta Lehner\",\n    \"code\": \"Representative\",\n    \"weight\": 182,\n    \"id\": \"6669a6de269fe4b4e1988a82\",\n    \"createdAt\": \"2024-12-06T05:32:23.855Z\",\n    \"updatedAt\": \"2024-10-06T13:35:28.124Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -1395,7 +2129,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"data\": [\n    {\n      \"name\": \"Cody Schowalter\",\n      \"code\": \"connect\",\n      \"weight\": 20\n    }\n  ]\n}"
+                  "raw": "{\n  \"data\": [\n    {\n      \"name\": \"Roberta Lehner\",\n      \"code\": \"Representative\",\n      \"weight\": 182\n    }\n  ]\n}"
                 },
                 "description": "",
                 "auth": {
@@ -1426,7 +2160,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"name\": \"Cody Schowalter\",\n      \"code\": \"connect\",\n      \"weight\": 20,\n      \"id\": \"66695408394cf01b1f82e7ba\",\n      \"createdAt\": \"2024-11-14T14:13:08.213Z\",\n      \"updatedAt\": \"2025-04-04T18:53:40.689Z\",\n      \"isDeleted\": false,\n      \"isActive\": true\n    }\n  ]\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"name\": \"Roberta Lehner\",\n      \"code\": \"Representative\",\n      \"weight\": 182,\n      \"id\": \"6669a6de269fe4b4e1988a83\",\n      \"createdAt\": \"2024-10-27T17:43:37.096Z\",\n      \"updatedAt\": \"2024-07-03T07:20:27.496Z\",\n      \"isDeleted\": false,\n      \"isActive\": true\n    }\n  ]\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -1493,7 +2227,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"name\": \"Cody Schowalter\",\n        \"code\": \"connect\",\n        \"weight\": 20,\n        \"id\": \"66695408394cf01b1f82e7bb\",\n        \"createdAt\": \"2024-11-28T10:34:57.833Z\",\n        \"updatedAt\": \"2024-09-06T06:36:15.299Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"name\": \"Roberta Lehner\",\n        \"code\": \"Representative\",\n        \"weight\": 182,\n        \"id\": \"6669a6de269fe4b4e1988a84\",\n        \"createdAt\": \"2024-07-20T12:12:33.634Z\",\n        \"updatedAt\": \"2024-06-21T14:56:47.764Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -1639,7 +2373,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"name\": \"Cody Schowalter\",\n    \"code\": \"connect\",\n    \"weight\": 20,\n    \"id\": \"66695408394cf01b1f82e7bd\",\n    \"createdAt\": \"2024-10-30T15:53:26.252Z\",\n    \"updatedAt\": \"2025-01-02T06:15:53.234Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"name\": \"Roberta Lehner\",\n    \"code\": \"Representative\",\n    \"weight\": 182,\n    \"id\": \"6669a6de269fe4b4e1988a86\",\n    \"createdAt\": \"2024-08-07T06:25:07.482Z\",\n    \"updatedAt\": \"2025-01-08T22:18:08.739Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -1760,7 +2494,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"Cody Schowalter\",\n  \"code\": \"connect\",\n  \"weight\": 20\n}"
+                  "raw": "{\n  \"name\": \"Roberta Lehner\",\n  \"code\": \"Representative\",\n  \"weight\": 182\n}"
                 },
                 "description": "",
                 "auth": {
@@ -1797,7 +2531,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"name\": \"Cody Schowalter\",\n    \"code\": \"connect\",\n    \"weight\": 20,\n    \"id\": \"66695408394cf01b1f82e7be\",\n    \"createdAt\": \"2025-04-22T12:33:30.340Z\",\n    \"updatedAt\": \"2025-05-01T19:20:30.935Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"name\": \"Roberta Lehner\",\n    \"code\": \"Representative\",\n    \"weight\": 182,\n    \"id\": \"6669a6de269fe4b4e1988a87\",\n    \"createdAt\": \"2025-02-01T10:01:17.968Z\",\n    \"updatedAt\": \"2024-08-08T20:08:48.513Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -1947,7 +2681,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"route_name\": \"National\",\n    \"method\": \"deposit\",\n    \"uri\": \"Buckinghamshire\",\n    \"id\": \"66695408394cf01b1f82e7c4\",\n    \"createdAt\": \"2024-11-16T13:17:29.711Z\",\n    \"updatedAt\": \"2024-10-13T04:11:14.821Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"route_name\": \"architect\",\n    \"method\": \"Lead\",\n    \"uri\": \"Armenian\",\n    \"id\": \"6669a6de269fe4b4e1988a8d\",\n    \"createdAt\": \"2024-11-30T03:55:44.238Z\",\n    \"updatedAt\": \"2024-10-31T00:51:51.987Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -1983,7 +2717,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"route_name\": \"National\",\n  \"method\": \"deposit\",\n  \"uri\": \"Buckinghamshire\"\n}"
+                  "raw": "{\n  \"route_name\": \"architect\",\n  \"method\": \"Lead\",\n  \"uri\": \"Armenian\"\n}"
                 },
                 "description": "",
                 "auth": {
@@ -2014,7 +2748,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"route_name\": \"National\",\n    \"method\": \"deposit\",\n    \"uri\": \"Buckinghamshire\",\n    \"id\": \"66695408394cf01b1f82e7c1\",\n    \"createdAt\": \"2025-01-24T00:10:51.053Z\",\n    \"updatedAt\": \"2024-09-17T14:24:01.909Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"route_name\": \"architect\",\n    \"method\": \"Lead\",\n    \"uri\": \"Armenian\",\n    \"id\": \"6669a6de269fe4b4e1988a8a\",\n    \"createdAt\": \"2024-12-06T02:38:46.567Z\",\n    \"updatedAt\": \"2024-11-26T05:48:08.112Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -2050,7 +2784,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"data\": [\n    {\n      \"route_name\": \"National\",\n      \"method\": \"deposit\",\n      \"uri\": \"Buckinghamshire\"\n    }\n  ]\n}"
+                  "raw": "{\n  \"data\": [\n    {\n      \"route_name\": \"architect\",\n      \"method\": \"Lead\",\n      \"uri\": \"Armenian\"\n    }\n  ]\n}"
                 },
                 "description": "",
                 "auth": {
@@ -2081,7 +2815,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"route_name\": \"National\",\n      \"method\": \"deposit\",\n      \"uri\": \"Buckinghamshire\",\n      \"id\": \"66695408394cf01b1f82e7c2\",\n      \"createdAt\": \"2024-12-18T21:13:13.326Z\",\n      \"updatedAt\": \"2025-04-19T09:09:13.281Z\",\n      \"isDeleted\": false,\n      \"isActive\": true\n    }\n  ]\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"route_name\": \"architect\",\n      \"method\": \"Lead\",\n      \"uri\": \"Armenian\",\n      \"id\": \"6669a6de269fe4b4e1988a8b\",\n      \"createdAt\": \"2024-12-17T12:58:03.146Z\",\n      \"updatedAt\": \"2025-01-31T18:52:39.558Z\",\n      \"isDeleted\": false,\n      \"isActive\": true\n    }\n  ]\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -2148,7 +2882,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"route_name\": \"National\",\n        \"method\": \"deposit\",\n        \"uri\": \"Buckinghamshire\",\n        \"id\": \"66695408394cf01b1f82e7c3\",\n        \"createdAt\": \"2024-10-10T17:35:16.075Z\",\n        \"updatedAt\": \"2024-07-11T22:41:04.752Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"route_name\": \"architect\",\n        \"method\": \"Lead\",\n        \"uri\": \"Armenian\",\n        \"id\": \"6669a6de269fe4b4e1988a8c\",\n        \"createdAt\": \"2025-02-02T11:02:53.194Z\",\n        \"updatedAt\": \"2024-10-26T20:34:23.461Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -2294,7 +3028,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"route_name\": \"National\",\n    \"method\": \"deposit\",\n    \"uri\": \"Buckinghamshire\",\n    \"id\": \"66695408394cf01b1f82e7c5\",\n    \"createdAt\": \"2024-08-24T02:23:00.463Z\",\n    \"updatedAt\": \"2025-06-07T11:39:36.031Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"route_name\": \"architect\",\n    \"method\": \"Lead\",\n    \"uri\": \"Armenian\",\n    \"id\": \"6669a6de269fe4b4e1988a8e\",\n    \"createdAt\": \"2025-01-30T13:46:15.062Z\",\n    \"updatedAt\": \"2024-11-22T09:42:55.304Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -2415,7 +3149,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"route_name\": \"National\",\n  \"method\": \"deposit\",\n  \"uri\": \"Buckinghamshire\"\n}"
+                  "raw": "{\n  \"route_name\": \"architect\",\n  \"method\": \"Lead\",\n  \"uri\": \"Armenian\"\n}"
                 },
                 "description": "",
                 "auth": {
@@ -2452,7 +3186,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"route_name\": \"National\",\n    \"method\": \"deposit\",\n    \"uri\": \"Buckinghamshire\",\n    \"id\": \"66695408394cf01b1f82e7c6\",\n    \"createdAt\": \"2025-05-19T03:37:18.174Z\",\n    \"updatedAt\": \"2024-08-03T07:43:13.311Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"route_name\": \"architect\",\n    \"method\": \"Lead\",\n    \"uri\": \"Armenian\",\n    \"id\": \"6669a6de269fe4b4e1988a8f\",\n    \"createdAt\": \"2024-08-04T13:46:43.851Z\",\n    \"updatedAt\": \"2024-12-14T00:00:57.247Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -2602,7 +3336,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"routeId\": \"66695408394cf01b1f82e7c8\",\n    \"roleId\": \"66695408394cf01b1f82e7c9\",\n    \"id\": \"66695408394cf01b1f82e7ce\",\n    \"createdAt\": \"2024-10-28T12:20:41.581Z\",\n    \"updatedAt\": \"2025-05-06T21:57:36.576Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"routeId\": \"6669a6de269fe4b4e1988a91\",\n    \"roleId\": \"6669a6de269fe4b4e1988a92\",\n    \"id\": \"6669a6de269fe4b4e1988a97\",\n    \"createdAt\": \"2025-02-10T02:06:30.037Z\",\n    \"updatedAt\": \"2025-01-07T02:55:41.403Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -2638,7 +3372,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"routeId\": \"66695408394cf01b1f82e7c8\",\n  \"roleId\": \"66695408394cf01b1f82e7c9\"\n}"
+                  "raw": "{\n  \"routeId\": \"6669a6de269fe4b4e1988a91\",\n  \"roleId\": \"6669a6de269fe4b4e1988a92\"\n}"
                 },
                 "description": "",
                 "auth": {
@@ -2669,7 +3403,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"routeId\": \"66695408394cf01b1f82e7c8\",\n    \"roleId\": \"66695408394cf01b1f82e7c9\",\n    \"id\": \"66695408394cf01b1f82e7cb\",\n    \"createdAt\": \"2024-06-18T11:22:23.129Z\",\n    \"updatedAt\": \"2024-09-13T06:23:17.120Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"routeId\": \"6669a6de269fe4b4e1988a91\",\n    \"roleId\": \"6669a6de269fe4b4e1988a92\",\n    \"id\": \"6669a6de269fe4b4e1988a94\",\n    \"createdAt\": \"2025-05-04T23:21:49.046Z\",\n    \"updatedAt\": \"2024-09-28T14:10:06.709Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -2705,7 +3439,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"data\": [\n    {\n      \"routeId\": \"66695408394cf01b1f82e7c8\",\n      \"roleId\": \"66695408394cf01b1f82e7c9\"\n    }\n  ]\n}"
+                  "raw": "{\n  \"data\": [\n    {\n      \"routeId\": \"6669a6de269fe4b4e1988a91\",\n      \"roleId\": \"6669a6de269fe4b4e1988a92\"\n    }\n  ]\n}"
                 },
                 "description": "",
                 "auth": {
@@ -2736,7 +3470,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"routeId\": \"66695408394cf01b1f82e7c8\",\n      \"roleId\": \"66695408394cf01b1f82e7c9\",\n      \"id\": \"66695408394cf01b1f82e7cc\",\n      \"createdAt\": \"2025-01-23T22:25:40.150Z\",\n      \"updatedAt\": \"2024-11-02T14:39:43.769Z\",\n      \"isDeleted\": false,\n      \"isActive\": true\n    }\n  ]\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"routeId\": \"6669a6de269fe4b4e1988a91\",\n      \"roleId\": \"6669a6de269fe4b4e1988a92\",\n      \"id\": \"6669a6de269fe4b4e1988a95\",\n      \"createdAt\": \"2025-03-08T05:43:35.439Z\",\n      \"updatedAt\": \"2024-10-11T08:40:36.565Z\",\n      \"isDeleted\": false,\n      \"isActive\": true\n    }\n  ]\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -2803,7 +3537,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"routeId\": \"66695408394cf01b1f82e7c8\",\n        \"roleId\": \"66695408394cf01b1f82e7c9\",\n        \"id\": \"66695408394cf01b1f82e7cd\",\n        \"createdAt\": \"2025-03-09T05:40:04.094Z\",\n        \"updatedAt\": \"2024-09-26T14:35:27.655Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"routeId\": \"6669a6de269fe4b4e1988a91\",\n        \"roleId\": \"6669a6de269fe4b4e1988a92\",\n        \"id\": \"6669a6de269fe4b4e1988a96\",\n        \"createdAt\": \"2025-04-02T19:04:54.954Z\",\n        \"updatedAt\": \"2025-02-19T21:00:44.899Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -2949,7 +3683,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"routeId\": \"66695408394cf01b1f82e7c8\",\n    \"roleId\": \"66695408394cf01b1f82e7c9\",\n    \"id\": \"66695408394cf01b1f82e7cf\",\n    \"createdAt\": \"2024-08-28T10:01:26.788Z\",\n    \"updatedAt\": \"2025-04-18T05:39:53.151Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"routeId\": \"6669a6de269fe4b4e1988a91\",\n    \"roleId\": \"6669a6de269fe4b4e1988a92\",\n    \"id\": \"6669a6de269fe4b4e1988a98\",\n    \"createdAt\": \"2024-06-24T19:11:07.354Z\",\n    \"updatedAt\": \"2024-11-20T08:25:34.729Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -2991,7 +3725,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"routeId\": \"66695408394cf01b1f82e7c8\",\n  \"roleId\": \"66695408394cf01b1f82e7c9\"\n}"
+                  "raw": "{\n  \"routeId\": \"6669a6de269fe4b4e1988a91\",\n  \"roleId\": \"6669a6de269fe4b4e1988a92\"\n}"
                 },
                 "description": "",
                 "auth": {
@@ -3028,7 +3762,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"routeId\": \"66695408394cf01b1f82e7c8\",\n    \"roleId\": \"66695408394cf01b1f82e7c9\",\n    \"id\": \"66695408394cf01b1f82e7d0\",\n    \"createdAt\": \"2024-12-03T11:34:20.296Z\",\n    \"updatedAt\": \"2024-09-08T06:10:33.901Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"routeId\": \"6669a6de269fe4b4e1988a91\",\n    \"roleId\": \"6669a6de269fe4b4e1988a92\",\n    \"id\": \"6669a6de269fe4b4e1988a99\",\n    \"createdAt\": \"2025-05-30T11:12:23.688Z\",\n    \"updatedAt\": \"2024-08-12T03:05:33.433Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -3257,7 +3991,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"userId\": \"66695408394cf01b1f82e7d2\",\n    \"roleId\": \"66695408394cf01b1f82e7d3\",\n    \"id\": \"66695408394cf01b1f82e7d8\",\n    \"createdAt\": \"2024-11-25T23:49:05.635Z\",\n    \"updatedAt\": \"2025-03-03T16:07:53.449Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"userId\": \"6669a6de269fe4b4e1988a9b\",\n    \"roleId\": \"6669a6de269fe4b4e1988a9c\",\n    \"id\": \"6669a6de269fe4b4e1988aa1\",\n    \"createdAt\": \"2025-01-12T13:04:33.054Z\",\n    \"updatedAt\": \"2025-01-20T13:26:20.780Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -3293,7 +4027,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"userId\": \"66695408394cf01b1f82e7d2\",\n  \"roleId\": \"66695408394cf01b1f82e7d3\"\n}"
+                  "raw": "{\n  \"userId\": \"6669a6de269fe4b4e1988a9b\",\n  \"roleId\": \"6669a6de269fe4b4e1988a9c\"\n}"
                 },
                 "description": "",
                 "auth": {
@@ -3324,7 +4058,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"userId\": \"66695408394cf01b1f82e7d2\",\n    \"roleId\": \"66695408394cf01b1f82e7d3\",\n    \"id\": \"66695408394cf01b1f82e7d5\",\n    \"createdAt\": \"2025-06-10T14:21:36.080Z\",\n    \"updatedAt\": \"2025-04-07T23:16:16.951Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"userId\": \"6669a6de269fe4b4e1988a9b\",\n    \"roleId\": \"6669a6de269fe4b4e1988a9c\",\n    \"id\": \"6669a6de269fe4b4e1988a9e\",\n    \"createdAt\": \"2025-05-26T16:22:01.530Z\",\n    \"updatedAt\": \"2025-01-23T14:23:00.158Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -3360,7 +4094,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"data\": [\n    {\n      \"userId\": \"66695408394cf01b1f82e7d2\",\n      \"roleId\": \"66695408394cf01b1f82e7d3\"\n    }\n  ]\n}"
+                  "raw": "{\n  \"data\": [\n    {\n      \"userId\": \"6669a6de269fe4b4e1988a9b\",\n      \"roleId\": \"6669a6de269fe4b4e1988a9c\"\n    }\n  ]\n}"
                 },
                 "description": "",
                 "auth": {
@@ -3391,7 +4125,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"userId\": \"66695408394cf01b1f82e7d2\",\n      \"roleId\": \"66695408394cf01b1f82e7d3\",\n      \"id\": \"66695408394cf01b1f82e7d6\",\n      \"createdAt\": \"2025-03-28T00:30:49.228Z\",\n      \"updatedAt\": \"2025-04-12T15:29:59.128Z\",\n      \"isDeleted\": false,\n      \"isActive\": true\n    }\n  ]\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"userId\": \"6669a6de269fe4b4e1988a9b\",\n      \"roleId\": \"6669a6de269fe4b4e1988a9c\",\n      \"id\": \"6669a6de269fe4b4e1988a9f\",\n      \"createdAt\": \"2024-11-01T02:08:30.947Z\",\n      \"updatedAt\": \"2025-02-06T15:10:02.524Z\",\n      \"isDeleted\": false,\n      \"isActive\": true\n    }\n  ]\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -3458,7 +4192,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"userId\": \"66695408394cf01b1f82e7d2\",\n        \"roleId\": \"66695408394cf01b1f82e7d3\",\n        \"id\": \"66695408394cf01b1f82e7d7\",\n        \"createdAt\": \"2024-09-23T14:28:15.417Z\",\n        \"updatedAt\": \"2024-10-01T22:16:14.627Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"userId\": \"6669a6de269fe4b4e1988a9b\",\n        \"roleId\": \"6669a6de269fe4b4e1988a9c\",\n        \"id\": \"6669a6de269fe4b4e1988aa0\",\n        \"createdAt\": \"2025-03-13T23:25:38.458Z\",\n        \"updatedAt\": \"2025-03-05T22:27:29.283Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -3604,7 +4338,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"userId\": \"66695408394cf01b1f82e7d2\",\n    \"roleId\": \"66695408394cf01b1f82e7d3\",\n    \"id\": \"66695408394cf01b1f82e7d9\",\n    \"createdAt\": \"2025-01-23T05:54:06.709Z\",\n    \"updatedAt\": \"2025-05-02T12:41:33.359Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"userId\": \"6669a6de269fe4b4e1988a9b\",\n    \"roleId\": \"6669a6de269fe4b4e1988a9c\",\n    \"id\": \"6669a6de269fe4b4e1988aa2\",\n    \"createdAt\": \"2024-06-24T01:11:07.527Z\",\n    \"updatedAt\": \"2025-01-17T17:15:35.553Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -3646,7 +4380,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"userId\": \"66695408394cf01b1f82e7d2\",\n  \"roleId\": \"66695408394cf01b1f82e7d3\"\n}"
+                  "raw": "{\n  \"userId\": \"6669a6de269fe4b4e1988a9b\",\n  \"roleId\": \"6669a6de269fe4b4e1988a9c\"\n}"
                 },
                 "description": "",
                 "auth": {
@@ -3683,7 +4417,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"userId\": \"66695408394cf01b1f82e7d2\",\n    \"roleId\": \"66695408394cf01b1f82e7d3\",\n    \"id\": \"66695408394cf01b1f82e7da\",\n    \"createdAt\": \"2024-09-26T14:08:31.753Z\",\n    \"updatedAt\": \"2024-07-19T22:02:39.887Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"userId\": \"6669a6de269fe4b4e1988a9b\",\n    \"roleId\": \"6669a6de269fe4b4e1988a9c\",\n    \"id\": \"6669a6de269fe4b4e1988aa3\",\n    \"createdAt\": \"2025-03-19T03:57:47.773Z\",\n    \"updatedAt\": \"2024-12-13T20:55:14.030Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -3850,6 +4584,78 @@
       "description": "client APIs",
       "item": [
         {
+          "name": "contact",
+          "description": "contact Model APIs",
+          "item": [
+            {
+              "name": "addcontact",
+              "request": {
+                "url": {
+                  "raw": "{{url}}/client/api/v1/contact/create",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "client",
+                    "api",
+                    "v1",
+                    "contact",
+                    "create"
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"first_name\": \"Salad\",\n  \"last_name\": \"Mountains\",\n  \"email\": \"Mckayla49@hotmail.com\",\n  \"language\": \"metrics\",\n  \"message\": \"transmit\"\n}"
+                },
+                "description": "",
+                "auth": {}
+              },
+              "response": [
+                {
+                  "name": "addcontact_response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{url}}/client/api/v1/contact/create",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "client",
+                        "api",
+                        "v1",
+                        "contact",
+                        "create"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"first_name\": \"Salad\",\n    \"last_name\": \"Mountains\",\n    \"email\": \"Mckayla49@hotmail.com\",\n    \"language\": \"metrics\",\n    \"message\": \"transmit\",\n    \"id\": \"6669a6de269fe4b4e1988a70\",\n    \"createdAt\": \"2024-06-25T15:51:52.722Z\",\n    \"updatedAt\": \"2024-08-27T22:28:36.828Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": []
+                }
+              ],
+              "_postman_isSubFolder": true
+            }
+          ]
+        },
+        {
           "name": "user",
           "description": "user Model APIs",
           "item": [
@@ -3922,7 +4728,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7b0\",\n    \"createdAt\": \"2025-05-15T21:52:14.210Z\",\n    \"updatedAt\": \"2025-03-22T16:45:32.416Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a7d\",\n    \"createdAt\": \"2025-01-21T11:23:36.137Z\",\n    \"updatedAt\": \"2025-05-26T19:44:51.609Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -3960,7 +4766,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"username\": \"Bobbie_Feest32\",\n  \"password\": \"Xfz18EBh39lDlDH\",\n  \"email\": \"Quinten14@hotmail.com\",\n  \"name\": \"Whitney Ruecker\",\n  \"role\": 1\n}"
+                  "raw": "{\n  \"username\": \"Urban_Jacobson2\",\n  \"password\": \"NfVaFSLqeAKyZBk\",\n  \"email\": \"Hillary5@hotmail.com\",\n  \"name\": \"Belinda Jakubowski\",\n  \"role\": 1\n}"
                 },
                 "description": "",
                 "auth": {
@@ -3993,7 +4799,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7ae\",\n    \"createdAt\": \"2025-03-11T17:28:18.435Z\",\n    \"updatedAt\": \"2024-07-30T03:12:27.596Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a79\",\n    \"createdAt\": \"2025-01-10T20:40:20.707Z\",\n    \"updatedAt\": \"2025-06-01T05:25:34.400Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -4064,7 +4870,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"username\": \"Bobbie_Feest32\",\n        \"password\": \"Xfz18EBh39lDlDH\",\n        \"email\": \"Quinten14@hotmail.com\",\n        \"name\": \"Whitney Ruecker\",\n        \"role\": 1,\n        \"id\": \"66695408394cf01b1f82e7af\",\n        \"createdAt\": \"2025-03-08T06:53:05.713Z\",\n        \"updatedAt\": \"2025-02-08T17:47:55.459Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"data\": [\n      {\n        \"username\": \"Urban_Jacobson2\",\n        \"password\": \"NfVaFSLqeAKyZBk\",\n        \"email\": \"Hillary5@hotmail.com\",\n        \"name\": \"Belinda Jakubowski\",\n        \"role\": 1,\n        \"id\": \"6669a6de269fe4b4e1988a7c\",\n        \"createdAt\": \"2024-06-29T02:55:59.101Z\",\n        \"updatedAt\": \"2024-06-25T11:06:01.349Z\",\n        \"isDeleted\": false,\n        \"isActive\": true\n      }\n    ],\n    \"paginator\": {\n      \"itemCount\": 1,\n      \"offset\": 0,\n      \"perPage\": 10,\n      \"pageCount\": 1,\n      \"currentPage\": 1,\n      \"slNo\": 1,\n      \"hasPrevPage\": false,\n      \"hasNextPage\": false,\n      \"prev\": null,\n      \"next\": null\n    }\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -4148,77 +4954,6 @@
               "_postman_isSubFolder": true
             },
             {
-              "name": "insertBulkuser",
-              "request": {
-                "url": {
-                  "raw": "{{url}}/client/api/v1/user/addBulk",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "client",
-                    "api",
-                    "v1",
-                    "user",
-                    "addBulk"
-                  ]
-                },
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"data\": [\n    {\n      \"username\": \"Bobbie_Feest32\",\n      \"password\": \"Xfz18EBh39lDlDH\",\n      \"email\": \"Quinten14@hotmail.com\",\n      \"name\": \"Whitney Ruecker\",\n      \"role\": 1\n    }\n  ]\n}"
-                },
-                "description": "",
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{token}}"
-                  }
-                }
-              },
-              "response": [
-                {
-                  "name": "insertBulkuser_response",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [],
-                    "url": {
-                      "raw": "{{url}}/client/api/v1/user/addBulk",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "client",
-                        "api",
-                        "v1",
-                        "user",
-                        "addBulk"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"username\": \"Bobbie_Feest32\",\n      \"password\": \"Xfz18EBh39lDlDH\",\n      \"email\": \"Quinten14@hotmail.com\",\n      \"name\": \"Whitney Ruecker\",\n      \"role\": 1,\n      \"id\": \"66695408394cf01b1f82e7b3\",\n      \"createdAt\": \"2024-10-28T03:54:20.939Z\",\n      \"updatedAt\": \"2024-08-12T17:32:11.090Z\",\n      \"isDeleted\": false,\n      \"isActive\": true\n    }\n  ]\n}",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json"
-                    }
-                  ],
-                  "cookie": []
-                }
-              ],
-              "_postman_isSubFolder": true
-            },
-            {
               "name": "updateuser",
               "request": {
                 "url": {
@@ -4250,7 +4985,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"username\": \"Bobbie_Feest32\",\n  \"password\": \"Xfz18EBh39lDlDH\",\n  \"email\": \"Quinten14@hotmail.com\",\n  \"name\": \"Whitney Ruecker\",\n  \"role\": 1\n}"
+                  "raw": "{\n  \"username\": \"Urban_Jacobson2\",\n  \"password\": \"NfVaFSLqeAKyZBk\",\n  \"email\": \"Hillary5@hotmail.com\",\n  \"name\": \"Belinda Jakubowski\",\n  \"role\": 1\n}"
                 },
                 "description": "",
                 "auth": {
@@ -4289,7 +5024,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7b1\",\n    \"createdAt\": \"2024-07-06T17:00:51.862Z\",\n    \"updatedAt\": \"2024-11-14T08:12:50.777Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a7a\",\n    \"createdAt\": \"2024-11-27T10:36:34.178Z\",\n    \"updatedAt\": \"2025-05-04T03:20:24.882Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -4372,232 +5107,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7b2\",\n    \"createdAt\": \"2024-08-18T00:31:34.803Z\",\n    \"updatedAt\": \"2025-03-01T00:01:38.862Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json"
-                    }
-                  ],
-                  "cookie": []
-                }
-              ],
-              "_postman_isSubFolder": true
-            },
-            {
-              "name": "softDeleteuser",
-              "request": {
-                "url": {
-                  "raw": "{{url}}/client/api/v1/user/softDelete/:id",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "client",
-                    "api",
-                    "v1",
-                    "user",
-                    "softDelete",
-                    ":id"
-                  ],
-                  "variable": [
-                    {
-                      "key": "id"
-                    }
-                  ]
-                },
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{}"
-                },
-                "description": "",
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{token}}"
-                  }
-                }
-              },
-              "response": [
-                {
-                  "name": "softDeleteuser_response",
-                  "originalRequest": {
-                    "method": "PUT",
-                    "header": [],
-                    "url": {
-                      "raw": "{{url}}/client/api/v1/user/softDelete/:id",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "client",
-                        "api",
-                        "v1",
-                        "user",
-                        "softDelete",
-                        ":id"
-                      ],
-                      "variable": [
-                        {
-                          "key": "id"
-                        }
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"acknowledged\": true,\n    \"modifiedCount\": 1,\n    \"upsertedId\": null,\n    \"upsertedCount\": 0,\n    \"matchedCount\": 1\n  }\n}",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json"
-                    }
-                  ],
-                  "cookie": []
-                }
-              ],
-              "_postman_isSubFolder": true
-            },
-            {
-              "name": "softDeleteManyuser",
-              "request": {
-                "url": {
-                  "raw": "{{url}}/client/api/v1/user/softDeleteMany",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "client",
-                    "api",
-                    "v1",
-                    "user",
-                    "softDeleteMany"
-                  ]
-                },
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"ids\": [\n    \":id\"\n  ]\n}"
-                },
-                "description": "",
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{token}}"
-                  }
-                }
-              },
-              "response": [
-                {
-                  "name": "softDeleteManyuser_response",
-                  "originalRequest": {
-                    "method": "PUT",
-                    "header": [],
-                    "url": {
-                      "raw": "{{url}}/client/api/v1/user/softDeleteMany",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "client",
-                        "api",
-                        "v1",
-                        "user",
-                        "softDeleteMany"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"acknowledged\": true,\n    \"modifiedCount\": 1,\n    \"upsertedId\": null,\n    \"upsertedCount\": 0,\n    \"matchedCount\": 1\n  }\n}",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json"
-                    }
-                  ],
-                  "cookie": []
-                }
-              ],
-              "_postman_isSubFolder": true
-            },
-            {
-              "name": "updateBulkuser",
-              "request": {
-                "url": {
-                  "raw": "{{url}}/client/api/v1/user/updateBulk",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "client",
-                    "api",
-                    "v1",
-                    "user",
-                    "updateBulk"
-                  ]
-                },
-                "method": "PUT",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json",
-                    "description": ""
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"filter\": {\n    \"isActive\": true\n  },\n  \"data\": {\n    \"isDeleted\": false\n  }\n}"
-                },
-                "description": "",
-                "auth": {
-                  "type": "bearer",
-                  "bearer": {
-                    "token": "{{token}}"
-                  }
-                }
-              },
-              "response": [
-                {
-                  "name": "updateBulkuser_response",
-                  "originalRequest": {
-                    "method": "PUT",
-                    "header": [],
-                    "url": {
-                      "raw": "{{url}}/client/api/v1/user/updateBulk",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "client",
-                        "api",
-                        "v1",
-                        "user",
-                        "updateBulk"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"acknowledged\": true,\n    \"modifiedCount\": 59,\n    \"upsertedId\": null,\n    \"upsertedCount\": 0,\n    \"matchedCount\": 59\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a7b\",\n    \"createdAt\": \"2025-04-12T11:11:30.702Z\",\n    \"updatedAt\": \"2024-07-28T16:19:04.340Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -4665,7 +5175,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Login Successful\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7b5\",\n    \"loginRetryLimit\": 0,\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWRlZDVjMGFjMjAxMmFjMDI4ODkxZiIsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MjkzNTEyNzAsImV4cCI6MTYyOTk1MTI3MH0.BJ-WKjNYeFDQ4pn8kfli5gwn6GLz_c3voFht20Agj9k\",\n    \"createdAt\": \"2024-06-13T22:04:43.109Z\",\n    \"updatedAt\": \"2025-03-06T14:27:27.674Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Login Successful\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a7e\",\n    \"loginRetryLimit\": 0,\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMWRlZDVjMGFjMjAxMmFjMDI4ODkxZiIsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MjkzNTEyNzAsImV4cCI6MTYyOTk1MTI3MH0.BJ-WKjNYeFDQ4pn8kfli5gwn6GLz_c3voFht20Agj9k\",\n    \"createdAt\": \"2025-01-26T10:41:19.527Z\",\n    \"updatedAt\": \"2024-08-09T21:38:00.502Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -4701,7 +5211,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"username\": \"Bobbie_Feest32\",\n  \"password\": \"Xfz18EBh39lDlDH\",\n  \"email\": \"Quinten14@hotmail.com\",\n  \"name\": \"Whitney Ruecker\",\n  \"role\": 1\n}"
+                  "raw": "{\n  \"username\": \"Urban_Jacobson2\",\n  \"password\": \"NfVaFSLqeAKyZBk\",\n  \"email\": \"Hillary5@hotmail.com\",\n  \"name\": \"Belinda Jakubowski\",\n  \"role\": 1\n}"
                 },
                 "description": "",
                 "auth": {}
@@ -4727,7 +5237,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Bobbie_Feest32\",\n    \"password\": \"Xfz18EBh39lDlDH\",\n    \"email\": \"Quinten14@hotmail.com\",\n    \"name\": \"Whitney Ruecker\",\n    \"role\": 1,\n    \"id\": \"66695408394cf01b1f82e7b5\",\n    \"loginRetryLimit\": 0,\n    \"createdAt\": \"2025-04-17T04:37:33.517Z\",\n    \"updatedAt\": \"2024-08-21T03:51:12.693Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": {\n    \"username\": \"Urban_Jacobson2\",\n    \"password\": \"NfVaFSLqeAKyZBk\",\n    \"email\": \"Hillary5@hotmail.com\",\n    \"name\": \"Belinda Jakubowski\",\n    \"role\": 1,\n    \"id\": \"6669a6de269fe4b4e1988a7e\",\n    \"loginRetryLimit\": 0,\n    \"createdAt\": \"2025-03-18T13:45:41.257Z\",\n    \"updatedAt\": \"2024-11-13T13:59:50.662Z\",\n    \"isDeleted\": false,\n    \"isActive\": true\n  }\n}",
                   "header": [
                     {
                       "key": "Content-Type",
@@ -5007,103 +5517,6 @@
                   "_postman_previewlanguage": "json",
                   "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Password reset successfully\",\n  \"data\": {}\n}",
                   "header": [],
-                  "cookie": []
-                }
-              ],
-              "_postman_isSubFolder": true
-            }
-          ]
-        },
-        {
-          "name": "File Upload",
-          "description": "Upload Files",
-          "item": [
-            {
-              "name": "File upload in client",
-              "request": {
-                "url": {
-                  "raw": "{{url}}/client/api/v1/upload",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "client",
-                    "api",
-                    "v1",
-                    "upload"
-                  ]
-                },
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "multipart/form-data",
-                    "description": ""
-                  }
-                ],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "file[]",
-                      "type": "file",
-                      "description": "Select file to upload"
-                    },
-                    {
-                      "key": "file[]",
-                      "type": "file",
-                      "disabled": true,
-                      "description": "Select Another file to upload multiple files"
-                    },
-                    {
-                      "key": "folder",
-                      "value": "Enter foldername",
-                      "type": "text",
-                      "disabled": true,
-                      "description": "Optional, enable to upload file to specific folder"
-                    },
-                    {
-                      "key": "fileName",
-                      "value": "Enter fileName",
-                      "type": "text",
-                      "disabled": true,
-                      "description": "Optional, enable to give Specific file name to uploaded File"
-                    }
-                  ],
-                  "raw": "{}"
-                },
-                "description": "",
-                "auth": {}
-              },
-              "response": [
-                {
-                  "name": "File upload in client",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [],
-                    "url": {
-                      "raw": "{{url}}/client/api/v1/upload",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "client",
-                        "api",
-                        "v1",
-                        "upload"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Your request is successfully executed\",\n  \"data\": [\n    {\n      \"status\": true,\n      \"path\": \"path to download file\"\n    }\n  ]\n}",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "application/json"
-                    }
-                  ],
                   "cookie": []
                 }
               ],

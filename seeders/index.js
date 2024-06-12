@@ -18,13 +18,13 @@ async function seedUser () {
   try {
     let userToBeInserted = {};
     userToBeInserted = {
-      password: 'ajDhixhMuFFD1Ql',
-      email: 'Marcelino.Shanahan@gmail.com',
+      password: 'yOFteEPPr1KwyQi',
+      email: 'Wendy_Paucek@hotmail.com',
       role: authConstant.USER_ROLE.User,
     };
     userToBeInserted.password = await bcrypt.hash(userToBeInserted.password, 8);
     const user = await dbService.findOneAndUpdateDocument(User, {
-      email: 'Marcelino.Shanahan@gmail.com',
+      email: 'Wendy_Paucek@hotmail.com',
       isActive: true,
       isDeleted: false,
     }, userToBeInserted, {
@@ -32,13 +32,13 @@ async function seedUser () {
       new: true,
     });
     userToBeInserted = {
-      password: 'QXIs_I8IAmz_0zC',
-      email: 'Tatyana_Robel94@yahoo.com',
+      password: 'WgusUBTxzAuUiQ9',
+      email: 'Garret.Kling@hotmail.com',
       role: authConstant.USER_ROLE.Admin,
     };
     userToBeInserted.password = await bcrypt.hash(userToBeInserted.password, 8);
     const admin = await dbService.findOneAndUpdateDocument(User, {
-      email: 'Tatyana_Robel94@yahoo.com',
+      email: 'Garret.Kling@hotmail.com',
       isActive: true,
       isDeleted: false,
     }, userToBeInserted, {
@@ -256,6 +256,66 @@ async function seedRouteRole () {
         method: 'PUT',
       },
       {
+        route: '/admin/contact/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/contact/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/contact/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/admin/contact/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/contact/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/contact/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/contact/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/contact/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/contact/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/contact/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/contact/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/contact/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
         route: '/admin/usertokens/create',
         role: 'SYSTEM_USER',
         method: 'POST',
@@ -456,6 +516,66 @@ async function seedRouteRole () {
         method: 'PUT',
       },
       {
+        route: '/client/api/v1/contact/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/contact/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/contact/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/client/api/v1/contact/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/contact/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/contact/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/contact/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/contact/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/contact/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/contact/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/contact/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/contact/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
         route: '/client/api/v1/usertokens/create',
         role: 'SYSTEM_USER',
         method: 'POST',
@@ -579,11 +699,11 @@ async function seedRouteRole () {
 async function seedUserRole () {
   try {
     const userRoles = [{
-      email: 'Marcelino.Shanahan@gmail.com',
-      password: 'ajDhixhMuFFD1Ql',
+      email: 'Wendy_Paucek@hotmail.com',
+      password: 'yOFteEPPr1KwyQi',
     }, {
-      email: 'Tatyana_Robel94@yahoo.com',
-      password: 'QXIs_I8IAmz_0zC',
+      email: 'Garret.Kling@hotmail.com',
+      password: 'WgusUBTxzAuUiQ9',
     }];
     const defaultRole = await dbService.getDocumentByQuery(Role, { code: 'SYSTEM_USER' });
     const insertedUsers = await dbService.findAllDocuments(User, { username: { $in: userRoles.map((userRole) => userRole.username) } });

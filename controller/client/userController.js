@@ -34,69 +34,6 @@ const addUser = async (req, res) => {
 };
 
 /**
- * @description : find all documents of User from collection based on query and options.
- * @param {object} req : request including option and query. {query, options : {page, limit, pagination, populate}, isCountOnly}
- * @param {object} res : response contains data found from collection.
- * @return {object} : found User(s). {status, message, data}
- */
-const findAllUser = async (req, res) => {
-  try {
-    const query = req.body && req.body.query ? { ...req.body.query } : {};
-    const options = req.body && req.body.options ? { ...req.body.options } : {};
-    if (req.body.isCountOnly) {
-      const totalRecords = await dbService.countDocument(User, query);
-      return res.success({ data: { totalRecords } });
-    }
-
-    const result = await dbService.getAllDocuments(User, query, options);
-    if (result && result.data && result.data.length) {
-      return res.success({ data: result });
-    }
-    return res.recordNotFound();
-  } catch (error) {
-    return res.internalServerError({ message: error.message });
-  }
-};
-
-/**
- * @description : find document of User from table by id;
- * @param {object} req : request including id in request params.
- * @param {object} res : response contains document retrieved from table.
- * @return {object} : found User. {status, message, data}
- */
-const getUser = async (req, res) => {
-  try {
-    if (!req.params.id) {
-      return res.badRequest();
-    }
-    const query = { _id: req.params.id };
-    const result = await dbService.getDocumentByQuery(User, query);
-    if (!result) {
-      return res.recordNotFound();
-    }
-    return res.success({ data: result });
-  } catch (error) {
-    return res.internalServerError({ message: error.message });
-  }
-};
-
-/**
- * @description : returns total number of documents of User.
- * @param {object} req : request including where object to apply filters in req body
- * @param {object} res : response that returns total number of documents.
- * @return {object} : number of documents. {status, message, data}
- */
-const getUserCount = async (req, res) => {
-  try {
-    const where = req.body && req.body.where ? { ...req.body.where } : {};
-    const totalRecords = await dbService.countDocument(User, where);
-    return res.success({ data: { totalRecords } });
-  } catch (error) {
-    return res.internalServerError({ message: error.message });
-  }
-};
-
-/**
  * @description : update document of User with data by id.
  * @param {object} req : request including id in request params and data in request body.
  * @param {object} res : response of updated User.
@@ -154,88 +91,63 @@ const partialUpdateUser = async (req, res) => {
 };
 
 /**
- * @description : deactivate document of User from table by id;
- * @param {object} req : request including id in request params.
- * @param {object} res : response contains updated document of User.
- * @return {object} : deactivated User. {status, message, data}
+ * @description : find all documents of User from collection based on query and options.
+ * @param {object} req : request including option and query. {query, options : {page, limit, pagination, populate}, isCountOnly}
+ * @param {object} res : response contains data found from collection.
+ * @return {object} : found User(s). {status, message, data}
  */
-const softDeleteUser = async (req, res) => {
+const findAllUser = async (req, res) => {
   try {
-    if (!req.params.id) {
-      return res.badRequest();
+    const query = req.body && req.body.query ? { ...req.body.query } : {};
+    const options = req.body && req.body.options ? { ...req.body.options } : {};
+    if (req.body.isCountOnly) {
+      const totalRecords = await dbService.countDocument(User, query);
+      return res.success({ data: { totalRecords } });
     }
-    const query = { _id: req.params.id };
-    const result = await deleteDependentService.softDeleteUser(query, req.user);
-    if (!result) {
-      return res.recordNotFound();
+
+    const result = await dbService.getAllDocuments(User, query, options);
+    if (result && result.data && result.data.length) {
+      return res.success({ data: result });
     }
-    return res.success({ data: result });
+    return res.recordNotFound();
   } catch (error) {
-    return res.internalServerError({ message: error.message });
-  }
-};
-/**
- * @description : deactivate multiple documents of User from table by ids;
- * @param {object} req : request including array of ids in request body.
- * @param {object} res : response contains updated documents of User.
- * @return {object} : number of deactivated documents of User. {status, message, data}
- */
-const softDeleteManyUser = async (req, res) => {
-  try {
-    if (!req.body || !req.body.ids) {
-      return res.badRequest();
-    }
-    const query = { _id: { $in: req.body.ids } };
-    const result = await deleteDependentService.softDeleteUser(query, req.user);
-    if (!result) {
-      return res.recordNotFound();
-    }
-    return res.success({ data: result });
-  } catch (error) {
-    return res.internalServerError({ message: error.message });
-  }
-};
-/**
- * @description : create multiple documents of User in mongodb collection.
- * @param {object} req : request including body for creating documents.
- * @param {object} res : response of created documents.
- * @return {object} : created Users. {status, message, data}
- */
-const bulkInsertUser = async (req, res) => {
-  try {
-    const dataToCreate = req.body && req.body.data ? [...req.body.data] : [];
-    for (let i = 0; i < dataToCreate.length; i++) {
-      dataToCreate[i].addedBy = req.user.id;
-    }
-    const result = await dbService.bulkInsert(User, dataToCreate);
-    return res.success({ data: result });
-  } catch (error) {
-    if (error.name === 'ValidationError') {
-      return res.validationError({ message: error.message });
-    }
-    if (error.code && error.code == 11000) {
-      return res.validationError({ message: error.message });
-    }
     return res.internalServerError({ message: error.message });
   }
 };
 
 /**
- * @description : update multiple records of User with data by filter.
- * @param {object} req : request including filter and data in request body.
- * @param {object} res : response of updated Users.
- * @return {object} : updated Users. {status, message, data}
+ * @description : find document of User from table by id;
+ * @param {object} req : request including id in request params.
+ * @param {object} res : response contains document retrieved from table.
+ * @return {object} : found User. {status, message, data}
  */
-const bulkUpdateUser = async (req, res) => {
+const getUser = async (req, res) => {
   try {
-    const filter = req.body && req.body.filter ? { ...req.body.filter } : {};
-    const dataToUpdate = req.body && req.body.data ? { ...req.body.data } : {};
-    dataToUpdate.updatedBy = req.user.id;
-    const result = await dbService.bulkUpdate(User, filter, dataToUpdate);
+    if (!req.params.id) {
+      return res.badRequest();
+    }
+    const query = { _id: req.params.id };
+    const result = await dbService.getDocumentByQuery(User, query);
     if (!result) {
       return res.recordNotFound();
     }
     return res.success({ data: result });
+  } catch (error) {
+    return res.internalServerError({ message: error.message });
+  }
+};
+
+/**
+ * @description : returns total number of documents of User.
+ * @param {object} req : request including where object to apply filters in req body
+ * @param {object} res : response that returns total number of documents.
+ * @return {object} : number of documents. {status, message, data}
+ */
+const getUserCount = async (req, res) => {
+  try {
+    const where = req.body && req.body.where ? { ...req.body.where } : {};
+    const totalRecords = await dbService.countDocument(User, where);
+    return res.success({ data: { totalRecords } });
   } catch (error) {
     return res.internalServerError({ message: error.message });
   }
@@ -327,15 +239,11 @@ const getLoggedInUserInfo = async (req, res) => {
 
 module.exports = {
   addUser,
+  updateUser,
+  partialUpdateUser,
   findAllUser,
   getUser,
   getUserCount,
-  updateUser,
-  partialUpdateUser,
-  softDeleteUser,
-  softDeleteManyUser,
-  bulkInsertUser,
-  bulkUpdateUser,
   changePassword,
   updateProfile,
   getLoggedInUserInfo,

@@ -19,7 +19,6 @@ router.route('/admin/user/update/:id').put(auth(PLATFORM.ADMIN), checkRolePermis
 router.route('/admin/user/partial-update/:id').put(auth(PLATFORM.ADMIN), checkRolePermission, userController.partialUpdateUser);
 router.route('/admin/user/softDelete/:id').put(auth(PLATFORM.ADMIN), checkRolePermission, userController.softDeleteUser);
 router.route('/admin/user/softDeleteMany').put(auth(PLATFORM.ADMIN), checkRolePermission, userController.softDeleteManyUser);
-router.route('/admin/user/addBulk').post(auth(PLATFORM.ADMIN), checkRolePermission, userController.bulkInsertUser);
 router.route('/admin/user/updateBulk').put(auth(PLATFORM.ADMIN), checkRolePermission, userController.bulkUpdateUser);
 router.route('/admin/user/me').get(auth(PLATFORM.ADMIN), userController.getLoggedInUserInfo);
 router.route('/admin/user/change-password').put(auth(PLATFORM.ADMIN), userController.changePassword);

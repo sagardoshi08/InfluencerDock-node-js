@@ -34,7 +34,6 @@ const FORGOT_PASSWORD_WITH = {
     email: true,
     sms: false,
   },
-  EXPIRE_TIME: 60,
 };
 
 module.exports = {
