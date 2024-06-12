@@ -9,7 +9,7 @@ const formidable = require('formidable');
 const validUrl = require('valid-url');
 
 const defaultDirectory = 'public/assets';
-const allowedFileTypes = ['pdf'];
+const allowedFileTypes = ['png', 'jpeg', 'jpg', 'pdf', 'gif'];
 const maxFileSize = 50; // In Megabyte
 
 /**

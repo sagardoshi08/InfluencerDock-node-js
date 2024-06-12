@@ -20,14 +20,14 @@
 
        - One user with User role,
 	   # Default User credentials
-	   **username** : Wendy_Paucek@hotmail.com
-	   **password** : yOFteEPPr1KwyQi
+	   **username** : Eleonore_Harvey7@gmail.com
+	   **password** : U8IMufLszzHKHCa
 
 
        - One user with Admin role,
 	   # Default Admin credentials
-	   **username** : Garret.Kling@hotmail.com
-	   **password** : WgusUBTxzAuUiQ9
+	   **username** : Donato.Walsh59@hotmail.com
+	   **password** : 0z4pekZz1eSVGJj
 
 
 # Default folder structure:

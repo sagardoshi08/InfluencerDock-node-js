@@ -1,5 +1,5 @@
 {
-  "id": "7270ba07-125a-41cd-b405-2616a8881901",
+  "id": "1f722c7f-bd64-481c-bb56-13b6dc656a91",
   "name": "InfluencerDock_environment",
   "values": [
     {
@@ -14,6 +14,6 @@
     }
   ],
   "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2024-06-12T13:47:10.941Z",
+  "_postman_exported_at": "2024-06-12T13:49:42.610Z",
   "_postman_exported_using": "Postman"
 }
