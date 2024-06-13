@@ -20,13 +20,13 @@
 
        - One user with User role,
 	   # Default User credentials
-	   **username** : Eleonore_Harvey7@gmail.com
+	   **username** : sagardoshi72427@gmail.com
 	   **password** : U8IMufLszzHKHCa
 
 
        - One user with Admin role,
 	   # Default Admin credentials
-	   **username** : Donato.Walsh59@hotmail.com
+	   **username** : sagardoshi2020@gmail.com
 	   **password** : 0z4pekZz1eSVGJj
 
 

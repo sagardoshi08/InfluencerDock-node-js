@@ -223,7 +223,7 @@ const sendResetPasswordNotification = async (user) => {
       const mailObj = {
         subject: 'Reset Password',
         to: user.email,
-        template: '/views/',
+        template: '/views/emailTemplate',
         data: {
           link: `http://localhost:${process.env.PORT}${viewType}${token}`,
           linkText: 'Reset Password',

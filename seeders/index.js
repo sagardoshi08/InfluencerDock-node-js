@@ -19,12 +19,12 @@ async function seedUser () {
     let userToBeInserted = {};
     userToBeInserted = {
       password: 'U8IMufLszzHKHCa',
-      email: 'Eleonore_Harvey7@gmail.com',
+      email: 'sagardoshi72427@gmail.com',
       role: authConstant.USER_ROLE.User,
     };
     userToBeInserted.password = await bcrypt.hash(userToBeInserted.password, 8);
     const user = await dbService.findOneAndUpdateDocument(User, {
-      email: 'Eleonore_Harvey7@gmail.com',
+      email: 'sagardoshi72427@gmail.com',
       isActive: true,
       isDeleted: false,
     }, userToBeInserted, {
@@ -33,12 +33,12 @@ async function seedUser () {
     });
     userToBeInserted = {
       password: '0z4pekZz1eSVGJj',
-      email: 'Donato.Walsh59@hotmail.com',
+      email: 'sagardoshi2020@gmail.com',
       role: authConstant.USER_ROLE.Admin,
     };
     userToBeInserted.password = await bcrypt.hash(userToBeInserted.password, 8);
     const admin = await dbService.findOneAndUpdateDocument(User, {
-      email: 'Donato.Walsh59@hotmail.com',
+      email: 'sagardoshi2020@gmail.com',
       isActive: true,
       isDeleted: false,
     }, userToBeInserted, {
@@ -699,10 +699,10 @@ async function seedRouteRole () {
 async function seedUserRole () {
   try {
     const userRoles = [{
-      email: 'Eleonore_Harvey7@gmail.com',
+      email: 'sagardoshi72427@gmail.com',
       password: 'U8IMufLszzHKHCa',
     }, {
-      email: 'Donato.Walsh59@hotmail.com',
+      email: 'sagardoshi2020@gmail.com',
       password: '0z4pekZz1eSVGJj',
     }];
     const defaultRole = await dbService.getDocumentByQuery(Role, { code: 'SYSTEM_USER' });

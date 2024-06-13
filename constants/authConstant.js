@@ -30,6 +30,7 @@ const MAX_LOGIN_RETRY_LIMIT = 5;
 const LOGIN_REACTIVE_TIME = 30;
 
 const FORGOT_PASSWORD_WITH = {
+  EXPIRE_TIME: 60,
   LINK: {
     email: true,
     sms: false,
