@@ -92,7 +92,9 @@ const loginUser = async (username, password, platform, roleAccess) => {
             data: 'You have not assigned any role',
           };
         }
-        if (platform == PLATFORM.admin) {
+        console.log('platform', platform)
+        console.log('PLATFORM.admin', PLATFORM.ADMIN)
+        if (platform === PLATFORM.ADMIN) {
           if (!LOGIN_ACCESS[user.role].includes(PLATFORM.ADMIN)) {
             return {
               flag: true,
@@ -100,7 +102,7 @@ const loginUser = async (username, password, platform, roleAccess) => {
             };
           }
           token = await generateToken(userData, JWT.ADMIN_SECRET);
-        } else if (platform == PLATFORM.client) {
+        } else if (platform === PLATFORM.CLIENT) {
           if (!LOGIN_ACCESS[user.role].includes(PLATFORM.CLIENT)) {
             return {
               flag: true,
@@ -108,6 +110,7 @@ const loginUser = async (username, password, platform, roleAccess) => {
             };
           }
           token = await generateToken(userData, JWT.CLIENT_SECRET);
+          console.log('C token', token)
         }
         if (user.loginRetryLimit) {
           await dbService.updateDocument(User, user.id, {
@@ -133,6 +136,7 @@ const loginUser = async (username, password, platform, roleAccess) => {
             roleAccess: roleAccessData,
           };
         }
+        console.log('userToReturn', userToReturn);
         return {
           flag: false,
           data: userToReturn,
