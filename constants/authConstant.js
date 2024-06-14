@@ -6,7 +6,7 @@
 const JWT = {
   ADMIN_SECRET: '98c98d7c98d7cs98c7d98c7sdc8sdc9u90ds',
   CLIENT_SECRET: 'dc89ds7c89ds7cd9s8c7ds9c7ds9c7sd98c',
-  EXPIRES_IN: 10000,
+  EXPIRES_IN: 525600,
 };
 
 const USER_ROLE = {
