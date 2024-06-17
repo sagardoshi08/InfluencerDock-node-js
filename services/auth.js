@@ -92,8 +92,6 @@ const loginUser = async (username, password, platform, roleAccess) => {
             data: 'You have not assigned any role',
           };
         }
-        console.log('platform', platform)
-        console.log('PLATFORM.admin', PLATFORM.ADMIN)
         if (platform === PLATFORM.ADMIN) {
           if (!LOGIN_ACCESS[user.role].includes(PLATFORM.ADMIN)) {
             return {
@@ -110,7 +108,6 @@ const loginUser = async (username, password, platform, roleAccess) => {
             };
           }
           token = await generateToken(userData, JWT.CLIENT_SECRET);
-          console.log('C token', token)
         }
         if (user.loginRetryLimit) {
           await dbService.updateDocument(User, user.id, {
