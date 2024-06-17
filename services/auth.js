@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /**
  * auth.js
  * @description :: service functions used in authentication
@@ -217,12 +218,13 @@ const sendResetPasswordNotification = async (user) => {
     if (FORGOT_PASSWORD_WITH.LINK.email) {
       const viewType = '/reset-password/';
       const msg = 'To reset your password, please follow the link below:';
+      const platform = PLATFORM.ADMIN === user.role ? process.env.ADMIN_PLATFORM_URL : process.env.CLIENT_PLATFORM_URL;
       const mailObj = {
         subject: 'Reset Password',
         to: user.email,
         template: '/views/client/resetPasswordTemplate',
         data: {
-          link: `http://localhost:${process.env.PORT}${viewType}${token}`,
+          link: `${platform}${viewType}${token}`,
           linkText: 'Reset Password',
           message: msg,
           name: user.name,
