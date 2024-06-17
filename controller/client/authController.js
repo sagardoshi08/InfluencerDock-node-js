@@ -68,13 +68,13 @@ const forgotPassword = async (req, res) => {
       resultOfEmail, resultOfSMS,
     } = await authService.sendResetPasswordNotification(found);
     if (resultOfEmail && resultOfSMS) {
-      return res.success({ message: 'otp successfully send.' });
+      return res.success({ message: 'Reset password link successfully send.' });
     } if (resultOfEmail && !resultOfSMS) {
-      return res.success({ message: 'otp successfully send to your email.' });
+      return res.success({ message: 'Reset password link successfully send to your email.' });
     } if (!resultOfEmail && resultOfSMS) {
-      return res.success({ message: 'otp successfully send to your mobile number.' });
+      return res.success({ message: 'Reset password link successfully send to your mobile number.' });
     }
-    return res.internalServerError({ message: 'otp can not be sent due to some issue try again later' });
+    return res.internalServerError({ message: 'Reset password link can not be sent due to some issue try again later' });
   } catch (error) {
     return res.internalServerError();
   }
@@ -97,7 +97,7 @@ const validateResetPasswordOtp = async (req, res) => {
       return res.failure({ message: 'Invalid OTP' });
     }
     if (dayjs(new Date()).isAfter(dayjs(found.resetPasswordLink.expireTime))) {
-      return res.failure({ message: 'Your reset password link is expired or invalid' });
+      return res.failure({ message: 'Your Reset password link is expired or invalid' });
     }
     await dbService.updateDocument(User, found.id, { resetPasswordLink: {} });
     return res.success({ message: 'Otp verified' });
@@ -123,7 +123,7 @@ const resetPassword = async (req, res) => {
       return res.failure({ message: 'Invalid Code' });
     }
     if (dayjs(new Date()).isAfter(dayjs(found.resetPasswordLink.expireTime))) { // link expire
-      return res.failure({ message: 'Your reset password link is expired or invalid' });
+      return res.failure({ message: 'Your Reset password link is expired or invalid' });
     }
     const result = await authService.resetPassword(found, params.newPassword);
     if (result.flag) {

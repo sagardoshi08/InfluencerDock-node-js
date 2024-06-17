@@ -1201,7 +1201,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"otp successfully send to your email.\",\n  \"data\": {}\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Reset password link successfully send to your email.\",\n  \"data\": {}\n}",
                   "header": [],
                   "cookie": []
                 }
@@ -3626,7 +3626,7 @@
                   "status": "OK",
                   "code": 200,
                   "_postman_previewlanguage": "json",
-                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"otp successfully send to your email.\",\n  \"data\": {}\n}",
+                  "body": "{\n  \"status\": \"SUCCESS\",\n  \"message\": \"Reset password link successfully send to your email.\",\n  \"data\": {}\n}",
                   "header": [],
                   "cookie": []
                 }

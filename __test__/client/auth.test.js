@@ -168,9 +168,9 @@ describe('POST /forgot-password -> if email passed from request body is not avai
 describe('POST /forgot-password -> if email passed from request body is valid and OTP sent successfully', () => {
   test('should return success message', async () => {
     const expectedOutputMessages = [
-      'otp successfully send.',
-      'otp successfully send to your email.',
-      'otp successfully send to your mobile number.',
+      'Reset password link successfully send.',
+      'Reset password link successfully send to your email.',
+      'Reset password link successfully send to your mobile number.',
     ];
     const user = await request(app)
       .post('/client/auth/forgot-password')

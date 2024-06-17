@@ -216,15 +216,16 @@ const sendResetPasswordNotification = async (user) => {
       });
     if (FORGOT_PASSWORD_WITH.LINK.email) {
       const viewType = '/reset-password/';
-      const msg = 'Click on the link below to reset your password.';
+      const msg = 'To reset your password, please follow the link below:';
       const mailObj = {
         subject: 'Reset Password',
         to: user.email,
-        template: '/views/emailTemplate',
+        template: '/views/client/resetPasswordTemplate',
         data: {
           link: `http://localhost:${process.env.PORT}${viewType}${token}`,
           linkText: 'Reset Password',
           message: msg,
+          name: user.name,
         },
       };
       try {
