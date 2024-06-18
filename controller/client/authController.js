@@ -4,15 +4,23 @@
  */
 
 const dayjs = require('dayjs');
+// eslint-disable-next-line import/no-unresolved
+const MailerLite = require('@mailerlite/mailerlite-nodejs').default;
+
 const authService = require('../../services/auth');
 const User = require('../../model/user');
 const dbService = require('../../utils/dbService');
 const userTokens = require('../../model/userTokens');
 const userSchemaKey = require('../../utils/validation/userValidation');
 const validation = require('../../utils/validateRequest');
-const { uniqueValidation } = require('../../utils/common');
-const { PLATFORM } = require('../../constants/authConstant');
+const {
+  uniqueValidation, getKeyByValue,
+} = require('../../utils/common');
+const {
+  PLATFORM, CATEGORY, JWT,
+} = require('../../constants/authConstant');
 
+const mailerlite = new MailerLite({ api_key: process.env.MAILERLITE_API_KEY });
 /**
  * @description : user registration
  * @param {object} req : request for register
@@ -33,13 +41,49 @@ const register = async (req, res) => {
     if (!unique) {
       return res.validationError({ message: 'User Registration Failed, Duplicate Data found' });
     }
-    const result = await dbService.createDocument(User, data);
-    return res.success({ data: result });
+
+    const params = {
+      email: data.email,
+      fields: {
+        name: data.name,
+        last_name: data.last_name,
+        username: data.username,
+        nickname: data.nickname,
+        country: data.country,
+        category: getKeyByValue(CATEGORY, data.category),
+        z_i_p: data.postcode,
+        city: data.city,
+      },
+      groups: [process.env.MAILERLITE_GROUP_ID],
+      status: 'active', // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
+    };
+
+    mailerlite.subscribers.createOrUpdate(params)
+      // eslint-disable-next-line no-unused-vars
+      .then(async (response) => {
+        const result = await dbService.createDocument(User, data);
+        // Get Token
+        const token = await authService.generateToken(data, JWT.CLIENT_SECRET);
+        return res.success({
+          data: {
+            result,
+            token,
+          },
+        });
+      })
+      .catch((error) => {
+        if (error.response) {
+          return res.validationError({ message: error.response.data });
+        }
+        return res.validationError({ message: error });
+      });
+
+    // return res.success({ data });
   } catch (error) {
     if (error.name === 'ValidationError') {
       return res.validationError({ message: error.message });
     }
-    if (error.code && error.code == 11000) {
+    if (error.code && error.code === 11000) {
       return res.validationError({ message: error.message });
     }
     return res.internalServerError();

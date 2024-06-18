@@ -7,6 +7,7 @@
     "test": "jest --runInBand --verbose --detectOpenHandles"
   },
   "dependencies": {
+    "@mailerlite/mailerlite-nodejs": "^1.2.2",
     "axios": "~0.21.1",
     "bcrypt": "5.0.0",
     "cookie-parser": "~1.4.4",

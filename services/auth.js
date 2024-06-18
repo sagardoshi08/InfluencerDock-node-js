@@ -28,6 +28,7 @@ const smsService = require('./sms/smsService');
 const generateToken = async (user, secret) => jwt.sign({
   id: user.id,
   email: user.email,
+  username: user.username,
 }, secret, { expiresIn: JWT.EXPIRES_IN * 60 });
 
 /**
@@ -40,7 +41,7 @@ const generateToken = async (user, secret) => jwt.sign({
  */
 const loginUser = async (username, password, platform, roleAccess) => {
   try {
-    const where = { email: username };
+    const where = { $or: [{ username }, { email: username }] };
     let user = await dbService.getDocumentByQuery(User, where);
     if (user) {
       if (user.loginRetryLimit >= MAX_LOGIN_RETRY_LIMIT) {
@@ -116,7 +117,7 @@ const loginUser = async (username, password, platform, roleAccess) => {
             loginReactiveTime: '',
           });
         }
-        const expire = dayjs().add(JWT.EXPIRES_IN, 'second').toISOString();
+        const expire = dayjs().add(JWT.EXPIRES_IN * 60, 'second').toISOString();
         await dbService.createDocument(userTokens, {
           userId: user.id,
           token,
@@ -134,7 +135,6 @@ const loginUser = async (username, password, platform, roleAccess) => {
             roleAccess: roleAccessData,
           };
         }
-        console.log('userToReturn', userToReturn);
         return {
           flag: false,
           data: userToReturn,
@@ -308,4 +308,5 @@ module.exports = {
   changePassword,
   resetPassword,
   sendResetPasswordNotification,
+  generateToken,
 };

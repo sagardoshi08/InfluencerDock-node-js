@@ -3,7 +3,6 @@ const userSchemaKey = require('../../utils/validation/userValidation');
 const validation = require('../../utils/validateRequest');
 const dbService = require('../../utils/dbService');
 const auth = require('../../services/auth');
-const deleteDependentService = require('../../utils/deleteDependent');
 
 /**
  * @description : create document of User in mongodb collection.
@@ -26,7 +25,7 @@ const addUser = async (req, res) => {
     if (error.name === 'ValidationError') {
       return res.validationError({ message: error.message });
     }
-    if (error.code && error.code == 11000) {
+    if (error.code && error.code === 11000) {
       return res.validationError({ message: error.message });
     }
     return res.internalServerError({ message: error.message });
@@ -61,7 +60,7 @@ const updateUser = async (req, res) => {
     if (error.name === 'ValidationError') {
       return res.validationError({ message: error.message });
     }
-    if (error.code && error.code == 11000) {
+    if (error.code && error.code === 11000) {
       return res.validationError({ message: error.message });
     }
     return res.internalServerError({ message: error.message });
@@ -207,7 +206,7 @@ const updateProfile = async (req, res) => {
     if (error.name === 'ValidationError') {
       return res.validationError({ message: error.message });
     }
-    if (error.code && error.code == 11000) {
+    if (error.code && error.code === 11000) {
       return res.validationError({ message: error.message });
     }
     return res.internalServerError({ message: error.message });

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
  * seeder.js
  * @description :: functions that seeds mock data to run the application
@@ -21,6 +22,7 @@ async function seedUser () {
       password: 'U8IMufLszzHKHCa',
       email: 'sagardoshi72427@gmail.com',
       role: authConstant.USER_ROLE.User,
+      username: 'sagar',
     };
     userToBeInserted.password = await bcrypt.hash(userToBeInserted.password, 8);
     const user = await dbService.findOneAndUpdateDocument(User, {
@@ -35,6 +37,7 @@ async function seedUser () {
       password: '0z4pekZz1eSVGJj',
       email: 'sagardoshi2020@gmail.com',
       role: authConstant.USER_ROLE.Admin,
+      username: 'admin',
     };
     userToBeInserted.password = await bcrypt.hash(userToBeInserted.password, 8);
     const admin = await dbService.findOneAndUpdateDocument(User, {

@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /**
  * user.js
  * @description :: model of a database collection user
@@ -7,7 +8,9 @@ const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 const idValidator = require('mongoose-id-validator');
 const bcrypt = require('bcrypt');
-const { USER_ROLE } = require('../constants/authConstant');
+const {
+  USER_ROLE, CATEGORY,
+} = require('../constants/authConstant');
 const { convertObjectToEnum } = require('../utils/common');
 
 const myCustomLabels = {
@@ -26,13 +29,61 @@ const { Schema } = mongoose;
 const schema = new Schema(
   {
 
-    username: { type: String },
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+    },
 
-    password: { type: String },
+    nickname: { type: String },
 
-    email: { type: String },
+    name: {
+      type: String,
+      required: true,
+    },
 
-    name: { type: String },
+    last_name: {
+      type: String,
+      required: true,
+    },
+
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+
+    city: { type: String },
+
+    postcode: { type: String },
+
+    country: { type: String },
+
+    latitude: { type: String },
+
+    longitude: { type: String },
+
+    password: {
+      type: String,
+      required: true,
+    },
+
+    category: {
+      type: Number,
+      enum: convertObjectToEnum(CATEGORY),
+      required: true,
+    },
+
+    socialLink: {
+      whatsapp_number: String,
+      presentation: String,
+      instagram: String,
+      facebook: String,
+      snapchat: String,
+      tiktok: String,
+      twitter: String,
+      telegram: String,
+    },
 
     isActive: { type: Boolean },
 

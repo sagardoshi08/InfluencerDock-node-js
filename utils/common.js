@@ -52,8 +52,8 @@ function replaceAll (string, search, replace) {
  */
 async function uniqueValidation (Model, data) {
   let filter = {};
-  if (data && data.email) {
-    filter = { email: data.email };
+  if (data && data.email && data.username) {
+    filter = { $or: [{ username: data.username }, { email: data.email }] };
   }
   filter.isActive = true;
   filter.isDeleted = false;
@@ -62,6 +62,10 @@ async function uniqueValidation (Model, data) {
     return false;
   }
   return true;
+}
+
+function getKeyByValue (obj, value) {
+  return Object.keys(obj).find((key) => obj[key] === value) || null; // or undefined if the key is not found
 }
 
 /**
@@ -132,4 +136,5 @@ module.exports = {
   uniqueValidation,
   getDifferenceOfTwoDatesInTime,
   getRoleAccessData,
+  getKeyByValue,
 };

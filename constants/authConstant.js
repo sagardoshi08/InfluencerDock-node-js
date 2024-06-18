@@ -14,6 +14,15 @@ const USER_ROLE = {
   Admin: 2,
 };
 
+const CATEGORY = {
+  'Content Creator': 1,
+  Photographer: 2,
+  'Video Maker': 3,
+  'Makeup Artist': 4,
+  'Photo Editor': 5,
+  'Video Editor': 6,
+};
+
 const PLATFORM = {
   ADMIN: 1,
   CLIENT: 2,
@@ -40,6 +49,7 @@ const FORGOT_PASSWORD_WITH = {
 module.exports = {
   JWT,
   USER_ROLE,
+  CATEGORY,
   DEFAULT_ROLE,
   PLATFORM,
   MAX_LOGIN_RETRY_LIMIT,
