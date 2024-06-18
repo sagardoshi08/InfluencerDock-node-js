@@ -283,14 +283,17 @@ const resetPassword = async (user, newPassword) => {
       resetPasswordLink: null,
       loginRetryLimit: 0,
     });
+    const platform = PLATFORM.ADMIN === user.role ? process.env.ADMIN_PLATFORM_URL : process.env.CLIENT_PLATFORM_URL;
     const mailObj = {
       subject: 'Reset Password',
       to: user.email,
-      template: '/views/successfullyResetPassword',
+      template: '/views/client/successfullyResetPassword',
       data: {
         isWidth: true,
         email: user.email || '-',
-        message: 'Password Successfully Reset',
+        link: `${platform}/login`,
+        linkText: 'Login',
+        name: user.name,
       },
     };
     await emailService.sendMail(mailObj);
