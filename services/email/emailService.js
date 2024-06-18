@@ -12,14 +12,14 @@ const ejs = require('ejs');
 module.exports = {
   sendMail: async (obj) => {
     const transporter = nodemailer.createTransport({
-      name: 'sirrah.ssl.hosttech.eu',
-      host: 'sirrah.ssl.hosttech.eu',
-      port: 587,
+      name: process.env.SMTP_HOST,
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
       secure: false, // Use `true` for port 465, `false` for all other ports
       requireTLS: true,
       auth: {
-        user: 'noreply@influencerdock.com',
-        pass: '8qyQt45^8',
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
       logger: true,
       debug: true,
@@ -33,7 +33,7 @@ module.exports = {
     // eslint-disable-next-line array-callback-return
     return await Promise.all(obj.to.map((emailId) => {
       const mailOpts = {
-        from: obj.from || 'noreply@influencerdock.com',
+        from: obj.from || process.env.SMTP_USER,
         to: emailId,
         subject: obj.subject,
         html: htmlText,
