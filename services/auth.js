@@ -14,6 +14,7 @@ const userTokens = require('../model/userTokens');
 const {
   JWT, LOGIN_ACCESS,
   PLATFORM, MAX_LOGIN_RETRY_LIMIT, LOGIN_REACTIVE_TIME, FORGOT_PASSWORD_WITH,
+  USER_ROLE,
 } = require('../constants/authConstant');
 const common = require('../utils/common');
 const emailService = require('./email/emailService');
@@ -218,7 +219,7 @@ const sendResetPasswordNotification = async (user) => {
     if (FORGOT_PASSWORD_WITH.LINK.email) {
       const viewType = '/reset-password/';
       const msg = 'To reset your password, please follow the link below:';
-      const platform = PLATFORM.ADMIN === user.role ? process.env.ADMIN_PLATFORM_URL : process.env.CLIENT_PLATFORM_URL;
+      const platform = USER_ROLE.Admin === user.role ? process.env.ADMIN_PLATFORM_URL : process.env.CLIENT_PLATFORM_URL;
       const mailObj = {
         subject: 'Reset Password',
         to: user.email,
@@ -283,7 +284,7 @@ const resetPassword = async (user, newPassword) => {
       resetPasswordLink: null,
       loginRetryLimit: 0,
     });
-    const platform = PLATFORM.ADMIN === user.role ? process.env.ADMIN_PLATFORM_URL : process.env.CLIENT_PLATFORM_URL;
+    const platform = USER_ROLE.Admin === user.role ? process.env.ADMIN_PLATFORM_URL : process.env.CLIENT_PLATFORM_URL;
     const mailObj = {
       subject: 'Reset Password success',
       to: user.email,
