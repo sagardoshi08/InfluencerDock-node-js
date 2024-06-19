@@ -222,7 +222,7 @@ const sendResetPasswordNotification = async (user) => {
       const mailObj = {
         subject: 'Reset Password',
         to: user.email,
-        template: '/views/client/resetPasswordTemplate',
+        template: '/views/common/resetPasswordTemplate',
         data: {
           link: `${platform}${viewType}${token}`,
           linkText: 'Reset Password',
@@ -287,7 +287,7 @@ const resetPassword = async (user, newPassword) => {
     const mailObj = {
       subject: 'Reset Password',
       to: user.email,
-      template: '/views/client/successfullyResetPassword',
+      template: '/views/common/successfullyResetPassword',
       data: {
         isWidth: true,
         email: user.email || '-',
