@@ -6,6 +6,7 @@
 const dayjs = require('dayjs');
 // eslint-disable-next-line import/no-unresolved
 const MailerLite = require('@mailerlite/mailerlite-nodejs').default;
+const NodeGeocoder = require('node-geocoder');
 
 const authService = require('../../services/auth');
 const User = require('../../model/user');
@@ -21,6 +22,14 @@ const {
 } = require('../../constants/authConstant');
 
 const mailerlite = new MailerLite({ api_key: process.env.MAILERLITE_API_KEY });
+
+const options = {
+  provider: 'google',
+  // Optional depending on the providers
+  apiKey: process.env.GOOGLE_MAP_API_KEY, // for Mapquest, OpenCage, APlace, Google Premier
+};
+
+const geocoder = NodeGeocoder(options);
 /**
  * @description : user registration
  * @param {object} req : request for register
@@ -36,7 +45,14 @@ const register = async (req, res) => {
     if (!validateRequest.isValid) {
       return res.validationError({ message: `Invalid values in parameters, ${validateRequest.message}` });
     }
-    const data = new User({ ...req.body });
+
+    const googleMapres = await geocoder.geocode(`${req.body.city}, ${req.body.postcode}, ${req.body.country}`);
+
+    const data = new User({
+      ...req.body,
+      latitude: googleMapres[0].latitude,
+      longitude: googleMapres[0].longitude,
+    });
     const unique = await uniqueValidation(User, req.body);
     if (!unique) {
       return res.validationError({ message: 'User Registration Failed, Duplicate Data found' });
@@ -58,6 +74,8 @@ const register = async (req, res) => {
       status: 'active', // possible statuses: active, unsubscribed, unconfirmed, bounced or junk.
     };
 
+    // mailerlite subscribers Add
+
     mailerlite.subscribers.createOrUpdate(params)
       // eslint-disable-next-line no-unused-vars
       .then(async (response) => {
@@ -77,8 +95,6 @@ const register = async (req, res) => {
         }
         return res.validationError({ message: error });
       });
-
-    // return res.success({ data });
   } catch (error) {
     if (error.name === 'ValidationError') {
       return res.validationError({ message: error.message });
