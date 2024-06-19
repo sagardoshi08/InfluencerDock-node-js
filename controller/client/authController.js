@@ -20,6 +20,7 @@ const {
 const {
   PLATFORM, CATEGORY, JWT,
 } = require('../../constants/authConstant');
+const emailService = require('../../services/email/emailService');
 
 const mailerlite = new MailerLite({ api_key: process.env.MAILERLITE_API_KEY });
 
@@ -82,6 +83,25 @@ const register = async (req, res) => {
         const result = await dbService.createDocument(User, data);
         // Get Token
         const token = await authService.generateToken(data, JWT.CLIENT_SECRET);
+
+        // Mail send to customer
+        const platform = process.env.CLIENT_PLATFORM_URL;
+        const mailObj = {
+          subject: 'Welcome to InfluencerDock',
+          to: result.email,
+          template: '/views/client/registerTemplate',
+          data: {
+            link: `${platform}/dashboard`,
+            linkText: 'My Account',
+            name: result.name,
+          },
+        };
+        try {
+          await emailService.sendMail(mailObj);
+        } catch (error) {
+          console.log(error);
+        }
+
         return res.success({
           data: {
             result,
