@@ -285,7 +285,7 @@ const resetPassword = async (user, newPassword) => {
     });
     const platform = PLATFORM.ADMIN === user.role ? process.env.ADMIN_PLATFORM_URL : process.env.CLIENT_PLATFORM_URL;
     const mailObj = {
-      subject: 'Reset Password',
+      subject: 'Reset Password success',
       to: user.email,
       template: '/views/common/successfullyResetPassword',
       data: {
