@@ -142,6 +142,7 @@ const resetPassword = async (req, res) => {
  * @return {object} : response for login {status, message, data}
  */
 const login = async (req, res) => {
+  console.log('ip', req.ip);
   try {
     const {
       username, password,
