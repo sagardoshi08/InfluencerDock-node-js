@@ -8,10 +8,13 @@ const express = require('express');
 const router = express.Router();
 const rateLimit = require('express-rate-limit');
 
+const allowlist = ['::1'];
+
 const rateLimiter = rateLimit({
-  windowMs: 30 * 60 * 1000,
-  max: 50,
-  message: 'Too many API calls from this IP, please try again after a 30 minutes',
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: 'Too many API calls from this IP, please try again after a 15 minutes',
+  skip: (req) => allowlist.includes(req.ip),
 });
 
 router.use(rateLimiter, require('./admin/index'));
