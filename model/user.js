@@ -70,8 +70,7 @@ const schema = new Schema(
 
     category: {
       type: Number,
-      enum: convertObjectToEnum(CATEGORY),
-      required: true,
+      enum: convertObjectToEnum(CATEGORY)
     },
 
     socialLink: {
