@@ -67,12 +67,16 @@ const schema = new Schema(
       type: String,
       required: true,
     },
-
-    category: {
-      type: Number,
-      enum: convertObjectToEnum(CATEGORY)
+    categories: {
+      type: [Number],
+      enum: convertObjectToEnum(CATEGORY),
+      validate: {
+        validator (arr) {
+          return arr.every((value) => convertObjectToEnum(CATEGORY).includes(value));
+        },
+        message: (props) => `${props.value} contains invalid category!`,
+      },
     },
-
     socialLink: {
       whatsapp_number: String,
       presentation: String,

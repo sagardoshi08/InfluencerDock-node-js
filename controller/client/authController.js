@@ -59,6 +59,8 @@ const register = async (req, res) => {
       return res.validationError({ message: 'User Registration Failed, Duplicate Data found' });
     }
 
+    const categories = data.categories.map((num) => getKeyByValue(CATEGORY, num));
+
     const params = {
       email: data.email,
       fields: {
@@ -67,7 +69,7 @@ const register = async (req, res) => {
         username: data.username,
         nickname: data.nickname,
         country: data.country,
-        category: getKeyByValue(CATEGORY, data.category),
+        category: categories.join(', '),
         z_i_p: data.postcode,
         city: data.city,
       },
