@@ -23,6 +23,12 @@ const CATEGORY = {
   'Video Editor': 6,
 };
 
+const ADMIN_ROLE = {
+  SuperAdmin: 1,
+  Admin: 2,
+  Moderator: 3,
+};
+
 const PLATFORM = {
   ADMIN: 1,
   CLIENT: 2,
@@ -56,4 +62,5 @@ module.exports = {
   LOGIN_REACTIVE_TIME,
   FORGOT_PASSWORD_WITH,
   LOGIN_ACCESS,
+  ADMIN_ROLE,
 };

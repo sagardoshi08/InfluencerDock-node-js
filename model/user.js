@@ -10,6 +10,7 @@ const idValidator = require('mongoose-id-validator');
 const bcrypt = require('bcrypt');
 const {
   USER_ROLE, CATEGORY,
+  ADMIN_ROLE,
 } = require('../constants/authConstant');
 const { convertObjectToEnum } = require('../utils/common');
 
@@ -100,6 +101,11 @@ const schema = new Schema(
       type: Number,
       enum: convertObjectToEnum(USER_ROLE),
       required: true,
+    },
+
+    adminRole: {
+      type: Number,
+      enum: convertObjectToEnum(ADMIN_ROLE),
     },
 
     resetPasswordLink: {
