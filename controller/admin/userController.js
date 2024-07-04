@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 const User = require('../../model/user');
 const userSchemaKey = require('../../utils/validation/userValidation');
 const validation = require('../../utils/validateRequest');

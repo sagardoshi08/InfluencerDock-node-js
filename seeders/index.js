@@ -28,7 +28,7 @@ async function seedUser () {
     const user = await dbService.findOneAndUpdateDocument(User, {
       email: 'sagardoshi72427@gmail.com',
       isActive: true,
-      isDeleted: false,
+      // isDeleted: false,
     }, userToBeInserted, {
       upsert: true,
       new: true,
@@ -319,6 +319,66 @@ async function seedRouteRole () {
         method: 'PUT',
       },
       {
+        route: '/admin/subscribers/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/subscribers/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/subscribers/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/admin/subscribers/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/subscribers/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/subscribers/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/subscribers/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/subscribers/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/subscribers/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/subscribers/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/subscribers/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/subscribers/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
         route: '/admin/usertokens/create',
         role: 'SYSTEM_USER',
         method: 'POST',
@@ -575,6 +635,66 @@ async function seedRouteRole () {
       },
       {
         route: '/client/api/v1/contact/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/subscribers/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/subscribers/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/subscribers/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/client/api/v1/subscribers/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/subscribers/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/subscribers/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/subscribers/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/subscribers/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/subscribers/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/subscribers/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/subscribers/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/subscribers/updatebulk',
         role: 'SYSTEM_USER',
         method: 'PUT',
       },

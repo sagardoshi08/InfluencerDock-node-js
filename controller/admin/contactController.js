@@ -24,7 +24,7 @@ const addContact = async (req, res) => {
     if (error.name === 'ValidationError') {
       return res.validationError({ message: error.message });
     }
-    if (error.code && error.code == 11000) {
+    if (error.code && error.code === 11000) {
       return res.validationError({ message: error.message });
     }
     return res.internalServerError({ message: error.message });
@@ -122,7 +122,7 @@ const updateContact = async (req, res) => {
     if (error.name === 'ValidationError') {
       return res.validationError({ message: error.message });
     }
-    if (error.code && error.code == 11000) {
+    if (error.code && error.code === 11000) {
       return res.validationError({ message: error.message });
     }
     return res.internalServerError({ message: error.message });
