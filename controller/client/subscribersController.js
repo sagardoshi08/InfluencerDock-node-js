@@ -2,6 +2,7 @@ const Subscribers = require('../../model/subscribers');
 const subscribersSchemaKey = require('../../utils/validation/subscribersValidation');
 const validation = require('../../utils/validateRequest');
 const dbService = require('../../utils/dbService');
+const { uniqueSubscribersValidation } = require('../../utils/common');
 
 /**
  * @description : create document of Subscribers in mongodb collection.
@@ -16,6 +17,12 @@ const addSubscribers = async (req, res) => {
     if (!validateRequest.isValid) {
       return res.validationError({ message: `Invalid values in parameters, ${validateRequest.message}` });
     }
+
+    const unique = await uniqueSubscribersValidation(Subscribers, req.body);
+    if (!unique) {
+      return res.validationError({ message: 'Duplicate Data found' });
+    }
+
     dataToCreate = new Subscribers(dataToCreate);
     const result = await dbService.createDocument(Subscribers, dataToCreate);
     return res.success({ data: result });

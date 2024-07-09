@@ -64,6 +64,20 @@ async function uniqueValidation (Model, data) {
   return true;
 }
 
+async function uniqueSubscribersValidation (Model, data) {
+  let filter = {};
+  if (data && data.email) {
+    filter = { email: data.email };
+  }
+  filter.isActive = true;
+  filter.isDeleted = false;
+  const found = await dbService.getDocumentByQuery(Model, filter);
+  if (found) {
+    return false;
+  }
+  return true;
+}
+
 function getKeyByValue (obj, value) {
   return Object.keys(obj).find((key) => obj[key] === value) || null; // or undefined if the key is not found
 }
@@ -137,4 +151,5 @@ module.exports = {
   getDifferenceOfTwoDatesInTime,
   getRoleAccessData,
   getKeyByValue,
+  uniqueSubscribersValidation,
 };
