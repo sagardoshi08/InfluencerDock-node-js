@@ -37,6 +37,7 @@ const geocoder = NodeGeocoder(options);
  * @param {object} res : response for register
  * @return {object} : response for register {status, message, data}
  */
+// eslint-disable-next-line consistent-return
 const register = async (req, res) => {
   try {
     const validateRequest = validation.validateParamsWithJoi(
@@ -126,6 +127,20 @@ const register = async (req, res) => {
     }
     return res.internalServerError();
   }
+};
+
+/**
+ * @description : user checkEmailUsername
+ * @param {object} req : request for checkEmailUsername
+ * @param {object} res : response for checkEmailUsername
+ * @return {object} : response for checkEmailUsername {status, message, data}
+ */
+const checkEmailUsername = async (req, res) => {
+  const unique = await uniqueValidation(User, req.body);
+  if (!unique) {
+    return res.validationError({ message: 'User Registration Failed, Duplicate Data found' });
+  }
+  return res.success({ message: 'User can registration using email and username' });
 };
 
 /**
@@ -275,4 +290,5 @@ module.exports = {
   resetPassword,
   login,
   logout,
+  checkEmailUsername,
 };
