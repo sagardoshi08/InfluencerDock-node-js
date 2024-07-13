@@ -64,6 +64,34 @@ async function uniqueValidation (Model, data) {
   return true;
 }
 
+async function uniqueEmailValidation (Model, data) {
+  let filter = {};
+  if (data && data.email) {
+    filter = { email: data.email };
+  }
+  filter.isActive = true;
+  filter.isDeleted = false;
+  const found = await dbService.getDocumentByQuery(Model, filter);
+  if (found) {
+    return false;
+  }
+  return true;
+}
+
+async function uniqueUsernameValidation (Model, data) {
+  let filter = {};
+  if (data && data.username) {
+    filter = { email: data.username };
+  }
+  filter.isActive = true;
+  filter.isDeleted = false;
+  const found = await dbService.getDocumentByQuery(Model, filter);
+  if (found) {
+    return false;
+  }
+  return true;
+}
+
 async function uniqueSubscribersValidation (Model, data) {
   let filter = {};
   if (data && data.email) {
@@ -152,4 +180,6 @@ module.exports = {
   getRoleAccessData,
   getKeyByValue,
   uniqueSubscribersValidation,
+  uniqueEmailValidation,
+  uniqueUsernameValidation
 };

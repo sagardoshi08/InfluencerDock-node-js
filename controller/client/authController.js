@@ -16,6 +16,8 @@ const userSchemaKey = require('../../utils/validation/userValidation');
 const validation = require('../../utils/validateRequest');
 const {
   uniqueValidation, getKeyByValue,
+  uniqueEmailValidation,
+  uniqueUsernameValidation,
 } = require('../../utils/common');
 const {
   PLATFORM, CATEGORY, JWT,
@@ -137,17 +139,31 @@ const register = async (req, res) => {
 };
 
 /**
- * @description : user checkEmailUsername
- * @param {object} req : request for checkEmailUsername
- * @param {object} res : response for checkEmailUsername
- * @return {object} : response for checkEmailUsername {status, message, data}
+ * @description : user checkEmail
+ * @param {object} req : request for checkEmail
+ * @param {object} res : response for checkEmail
+ * @return {object} : response for checkEmail {status, message, data}
  */
-const checkEmailUsername = async (req, res) => {
-  const unique = await uniqueValidation(User, req.body);
+const checkEmail = async (req, res) => {
+  const unique = await uniqueEmailValidation(User, req.body);
   if (!unique) {
-    return res.validationError({ message: 'User Registration Failed, Duplicate Data found' });
+    return res.validationError({ message: 'User Registration Failed, Email already exists' });
   }
-  return res.success({ message: 'User can registration using email and username' });
+  return res.success({ message: 'User can registration using email' });
+};
+
+/**
+ * @description : user checkUsername
+ * @param {object} req : request for checkUsername
+ * @param {object} res : response for checkUsername
+ * @return {object} : response for checkUsername {status, message, data}
+ */
+const checkUsername = async (req, res) => {
+  const unique = await uniqueUsernameValidation(User, req.body);
+  if (!unique) {
+    return res.validationError({ message: 'User Registration Failed, Username already exists' });
+  }
+  return res.success({ message: 'User can registration using username' });
 };
 
 /**
@@ -297,5 +313,6 @@ module.exports = {
   resetPassword,
   login,
   logout,
-  checkEmailUsername,
+  checkEmail,
+  checkUsername
 };

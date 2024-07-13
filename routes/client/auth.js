@@ -12,7 +12,8 @@ const { PLATFORM } = require('../../constants/authConstant');
 const authController = require('../../controller/client/authController');
 
 routes.route('/register').post(authController.register);
-routes.post('/checkEmailUsername', authController.checkEmailUsername);
+routes.post('/checkEmail', authController.checkEmail);
+routes.post('/checkUsername', authController.checkUsername);
 routes.post('/login', authController.login);
 routes.route('/forgot-password').post(authController.forgotPassword);
 routes.route('/validate-otp').post(authController.validateResetPasswordOtp);
