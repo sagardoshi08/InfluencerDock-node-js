@@ -85,7 +85,14 @@ const register = async (req, res) => {
       .then(async (response) => {
         const result = await dbService.createDocument(User, data);
         // Get Token
-        const token = await authService.generateToken(data, JWT.CLIENT_SECRET);
+        const token = await authService.generateToken(result, JWT.CLIENT_SECRET);
+
+        const expire = dayjs().add(JWT.EXPIRES_IN * 60, 'second').toISOString();
+        await dbService.createDocument(userTokens, {
+          userId: result.id,
+          token,
+          tokenExpiredTime: expire,
+        });
 
         // Mail send to customer
         const platform = process.env.CLIENT_PLATFORM_URL;
