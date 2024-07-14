@@ -64,6 +64,10 @@ const schema = new Schema(
 
     longitude: { type: String },
 
+    avatar: { type: String },
+
+    coverImage: { type: String },
+
     password: {
       type: String,
       required: true,

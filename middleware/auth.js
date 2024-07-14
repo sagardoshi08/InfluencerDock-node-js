@@ -1,3 +1,6 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-unused-vars */
+/* eslint-disable eqeqeq */
 /**
  * auth.js
  * @description :: middleware that checks authentication and authorization of user

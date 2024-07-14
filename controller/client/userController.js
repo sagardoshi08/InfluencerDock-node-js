@@ -1,8 +1,13 @@
+const uuid = require('uuid').v4;
+const fs = require('fs');
+const path = require('path');
 const User = require('../../model/user');
 const userSchemaKey = require('../../utils/validation/userValidation');
 const validation = require('../../utils/validateRequest');
 const dbService = require('../../utils/dbService');
 const auth = require('../../services/auth');
+
+const defaultDirectory = 'public/assets/';
 
 /**
  * @description : create document of User in mongodb collection.
@@ -178,11 +183,46 @@ const changePassword = async (req, res) => {
 };
 
 /**
+ * @description : create directory to specified path
+ * @param {string} directoryPath : location where directory will be created
+ * @return {boolean} : returns true if directory is created or false
+ */
+const makeDirectory = async (directoryPath) => {
+  if (!fs.existsSync(directoryPath)) {
+    fs.promises.mkdir(directoryPath, { recursive: true }, (err) => {
+      if (err) {
+        return false;
+      }
+      return true;
+    });
+  }
+  return true;
+};
+
+const saveImage = async (buffer, directory) => {
+  try {
+    await makeDirectory(`${defaultDirectory}${directory}`);
+
+    // Generate a unique filename
+    const filename = `${uuid()}.jpg`; // You can use any extension
+    // Path to save image
+    const imagePath = path.join(defaultDirectory, directory, filename);
+
+    await fs.promises.writeFile(imagePath, buffer);
+    return `${process.env.API_PLATFORM_URL}/assets/${directory}/${filename}`;
+  } catch (error) {
+    console.error('Error saving the image:', error);
+    throw error; // Propagate the error back to the caller
+  }
+};
+
+/**
  * @description : update user profile.
  * @param {object} req : request including user profile details to update in request body.
  * @param {object} res : updated user document.
  * @return {object} : updated user document. {status, message, data}
  */
+
 const updateProfile = async (req, res) => {
   try {
     const profileData = { ...req.body };
@@ -197,6 +237,33 @@ const updateProfile = async (req, res) => {
     delete profileData.createdAt;
     delete profileData.updatedAt;
     delete profileData.id;
+
+    if (profileData.avatar && profileData.avatar !== '') {
+      // Avatar Image
+
+      const base64Image = profileData.avatar;
+      // Remove header
+      const base64Data = base64Image.replace(/^data:image\/\w+;base64,/, '');
+      const buffer = Buffer.from(base64Data, 'base64');
+
+      const avatarUrl = await saveImage(buffer, 'avatar');
+      // Save image to server
+      profileData.avatar = avatarUrl;
+    }
+
+    if (profileData.coverImage && profileData.coverImage !== '') {
+      // Avatar Image
+
+      const base64Image = profileData.coverImage;
+      // Remove header
+      const base64Data = base64Image.replace(/^data:image\/\w+;base64,/, '');
+      const buffer = Buffer.from(base64Data, 'base64');
+
+      const coverUrl = await saveImage(buffer, 'cover');
+      // Save image to server
+      profileData.coverImage = coverUrl;
+    }
+
     const result = await dbService.findOneAndUpdateDocument(User, { _id: req.user.id }, profileData);
     if (!result) {
       return res.recordNotFound();
@@ -226,7 +293,7 @@ const getLoggedInUserInfo = async (req, res) => {
       isDeleted: false,
       isActive: true,
     };
-    const foundUser = await dbService.getSingleDocument(User, query);
+    const foundUser = await dbService.getDocumentByQuery(User, query);
     if (!foundUser) {
       return res.recordNotFound();
     }
