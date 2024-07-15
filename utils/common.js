@@ -81,7 +81,7 @@ async function uniqueEmailValidation (Model, data) {
 async function uniqueUsernameValidation (Model, data) {
   let filter = {};
   if (data && data.username) {
-    filter = { email: data.username };
+    filter = { username: data.username };
   }
   filter.isActive = true;
   filter.isDeleted = false;
