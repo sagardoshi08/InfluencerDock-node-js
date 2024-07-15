@@ -68,6 +68,8 @@ const schema = new Schema(
 
     coverImage: { type: String },
 
+    description: { type: String },
+
     password: {
       type: String,
       required: true,
