@@ -127,10 +127,10 @@ const findAllUser = async (req, res) => {
  */
 const getUser = async (req, res) => {
   try {
-    if (!req.params.id) {
+    if (!req.params.username) {
       return res.badRequest();
     }
-    const query = { _id: req.params.id };
+    const query = { username: req.params.username };
     const result = await dbService.getDocumentByQuery(User, query);
     if (!result) {
       return res.recordNotFound();
