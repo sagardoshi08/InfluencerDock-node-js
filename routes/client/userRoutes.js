@@ -14,7 +14,7 @@ const checkRolePermission = require('../../middleware/checkRolePermission');
 router.route('/client/api/v1/user/create').post(auth(PLATFORM.CLIENT), checkRolePermission, userController.addUser);
 router.route('/client/api/v1/user/update/:id').put(auth(PLATFORM.CLIENT), checkRolePermission, userController.updateUser);
 router.route('/client/api/v1/user/partial-update/:id').put(auth(PLATFORM.CLIENT), checkRolePermission, userController.partialUpdateUser);
-router.route('/client/api/v1/user/list').post(auth(PLATFORM.CLIENT), checkRolePermission, userController.findAllUser);
+router.route('/client/api/v1/user/list').post(userController.findAllUser);
 router.route('/client/api/v1/user/me').get(auth(PLATFORM.CLIENT), userController.getLoggedInUserInfo);
 router.route('/client/api/v1/user/:id').get(auth(PLATFORM.CLIENT), checkRolePermission, userController.getUser);
 router.route('/client/api/v1/user/count').post(auth(PLATFORM.CLIENT), checkRolePermission, userController.getUserCount);
