@@ -1,3 +1,9 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable eqeqeq */
+/* eslint-disable prefer-promise-reject-errors */
 /**
  * fileUploadController.js
  * @description :: exports methods related file upload
@@ -36,17 +42,21 @@ const upload = async (req, res) => {
           reject(err);
         }
 
+        console.log('fields', fields);
+
         const uploadSuccess = [];
         const uploadFailed = [];
         let fileCount = 1;
 
         const fileArr = [];
+
         if (!files['file[]']) {
           reject({
             message: 'Select at least one file to upload.',
             name: 'validationError',
           });
         }
+
         if (!Array.isArray(files['file[]'])) {
           fileArr.push(files['file[]']);
           files['file[]'] = fileArr;
@@ -126,14 +136,13 @@ const makeDirectory = async (directoryPath) => {
  * @return {object} : response for file upload
  */
 const uploadFiles = async (file, fields, fileCount) => {
-  const tempPath = file.path;
+  const tempPath = file.filepath;
   let unlink;
-  let fileName = file.name;
+  let fileName = file.originalFilename;
 
-  let extension = path.extname(file.name);
+  let extension = path.extname(file.originalFilename);
   extension = extension.split('.').pop();
-
-  fileType = file.type;
+  // fileType = file.type;
 
   if (allowedFileTypes.length) {
     // Check allowed extension;
@@ -155,7 +164,7 @@ const uploadFiles = async (file, fields, fileCount) => {
   }
 
   // Create New path
-  let newPath = `${defaultDirectory}/${new Date().getTime()}${path.extname(file.name)}`;
+  let newPath = `${defaultDirectory}/${new Date().getTime()}-${fileCount}${path.extname(file.originalFilename)}`;
 
   // Create Requested Directory,if given in request parameter.
   if (fields && fields.folderName) {
@@ -163,13 +172,13 @@ const uploadFiles = async (file, fields, fileCount) => {
     const createDir = await makeDirectory(newDir);
     if (createDir) {
       if (fields.fileName) {
-        newPath = `${newDir}/${fields.fileName}-${fileCount}${path.extname(file.name)}`;
-        fileName = fields.fileName;
+        newPath = `${newDir}/${fields.fileName}-${fileCount}${path.extname(file.originalFilename)}`;
+      } else {
+        newPath = `${newDir}/${new Date().getTime()}-${fileCount}${path.extname(file.originalFilename)}`;
       }
     }
   } else if (fields && fields.fileName) {
-    newPath = `${defaultDirectory}/${fields.fileName}-${fileCount}${path.extname(file.name)}`;
-    fileName = fields.fileName;
+    newPath = `${defaultDirectory}/${fields.fileName}-${fileCount}${path.extname(file.originalFilename)}`;
   }
 
   const response = await new Promise(async (resolve, reject) => {

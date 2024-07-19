@@ -22,7 +22,7 @@ async function seedUser () {
       password: 'U8IMufLszzHKHCa',
       email: 'sagardoshi72427@gmail.com',
       role: authConstant.USER_ROLE.User,
-      username: 'sagar',
+      username: 'sagar1',
     };
     userToBeInserted.password = await bcrypt.hash(userToBeInserted.password, 8);
     const user = await dbService.findOneAndUpdateDocument(User, {

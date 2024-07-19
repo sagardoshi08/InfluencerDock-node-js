@@ -19,7 +19,7 @@
     "express": "~4.16.1",
     "express-list-endpoints": "~5.0.0",
     "express-rate-limit": "~5.2.6",
-    "formidable": "~2.0.1",
+    "formidable": "^3.5.1",
     "joi": "~17.3.0",
     "jsonwebtoken": "~8.5.1",
     "mongoose": "~6.2.5",
