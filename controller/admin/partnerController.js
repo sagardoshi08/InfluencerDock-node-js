@@ -1,7 +1,48 @@
+const uuid = require('uuid').v4;
+const fs = require('fs');
+const path = require('path');
 const Partner = require('../../model/partner');
 const partnerSchemaKey = require('../../utils/validation/partnerValidation');
 const validation = require('../../utils/validateRequest');
 const dbService = require('../../utils/dbService');
+
+const defaultDirectory = 'public/assets/';
+
+
+
+/**
+ * @description : create directory to specified path
+ * @param {string} directoryPath : location where directory will be created
+ * @return {boolean} : returns true if directory is created or false
+ */
+const makeDirectory = async (directoryPath) => {
+  if (!fs.existsSync(directoryPath)) {
+    fs.promises.mkdir(directoryPath, { recursive: true }, (err) => {
+      if (err) {
+        return false;
+      }
+      return true;
+    });
+  }
+  return true;
+};
+
+const saveImage = async (buffer, directory) => {
+  try {
+    await makeDirectory(`${defaultDirectory}${directory}`);
+
+    // Generate a unique filename
+    const filename = `${uuid()}.jpg`; // You can use any extension
+    // Path to save image
+    const imagePath = path.join(defaultDirectory, directory, filename);
+
+    await fs.promises.writeFile(imagePath, buffer);
+    return `${process.env.API_PLATFORM_URL}/assets/${directory}/${filename}`;
+  } catch (error) {
+    console.error('Error saving the image:', error);
+    throw error; // Propagate the error back to the caller
+  }
+};
 
 /**
  * @description : create document of Partner in mongodb collection.
@@ -17,6 +58,19 @@ const addPartner = async (req, res) => {
       return res.validationError({ message: `Invalid values in parameters, ${validateRequest.message}` });
     }
     dataToCreate.addedBy = req.user.id;
+    if (dataToCreate.image && dataToCreate.image !== '') {
+      // Partner Image
+
+      const base64Image = dataToCreate.image;
+      // Remove header
+      const base64Data = base64Image.replace(/^data:image\/\w+;base64,/, '');
+      const buffer = Buffer.from(base64Data, 'base64');
+
+      const partnerUrl = await saveImage(buffer, 'partner');
+      // Save image to server
+      dataToCreate.image = partnerUrl;
+    }
+
     dataToCreate = new Partner(dataToCreate);
     const result = await dbService.createDocument(Partner, dataToCreate);
     return res.success({ data: result });
@@ -30,6 +84,7 @@ const addPartner = async (req, res) => {
     return res.internalServerError({ message: error.message });
   }
 };
+
 
 /**
  * @description : find all documents of Partner from collection based on query and options.
@@ -111,6 +166,20 @@ const updatePartner = async (req, res) => {
       return res.validationError({ message: `Invalid values in parameters, ${validateRequest.message}` });
     }
     delete dataToUpdate.addedBy;
+
+    if (dataToUpdate.image && dataToUpdate.image !== '') {
+      // Partner Image
+
+      const base64Image = dataToUpdate.image;
+      // Remove header
+      const base64Data = base64Image.replace(/^data:image\/\w+;base64,/, '');
+      const buffer = Buffer.from(base64Data, 'base64');
+
+      const partnerUrl = await saveImage(buffer, 'partner');
+      // Save image to server
+      dataToUpdate.image = partnerUrl;
+    }
+
     dataToUpdate.updatedBy = req.user.id;
     const query = { _id: req.params.id };
     const result = await dbService.findOneAndUpdateDocument(Partner, query, dataToUpdate);
