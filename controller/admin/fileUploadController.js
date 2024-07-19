@@ -193,7 +193,7 @@ const uploadFiles = async (file, fields, fileCount) => {
           resolve({
             status: true,
             message: 'File upload successfully.',
-            data: `/${newPath}`,
+            data: `${process.env.API_PLATFORM_URL}/${newPath}`,
           });
         }
       });

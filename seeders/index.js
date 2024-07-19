@@ -439,6 +439,66 @@ async function seedRouteRole () {
         method: 'PUT',
       },
       {
+        route: '/admin/partner/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/partner/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/partner/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/admin/partner/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/partner/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/partner/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/partner/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/partner/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/partner/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/partner/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/partner/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/partner/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
         route: '/client/api/v1/user/create',
         role: 'User',
         method: 'POST',
@@ -755,6 +815,66 @@ async function seedRouteRole () {
       },
       {
         route: '/client/api/v1/usertokens/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/partner/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/partner/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/partner/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/client/api/v1/partner/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/partner/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/partner/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/partner/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/partner/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/partner/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/partner/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/partner/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/partner/updatebulk',
         role: 'SYSTEM_USER',
         method: 'PUT',
       },
