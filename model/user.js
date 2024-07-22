@@ -97,6 +97,12 @@ const schema = new Schema(
 
     isActive: { type: Boolean },
 
+    isPremium: {
+      type: Boolean,
+      default: false,
+      required: true,
+    },
+
     createdAt: { type: Date },
 
     updatedAt: { type: Date },
@@ -141,6 +147,7 @@ const schema = new Schema(
 schema.pre('save', async function (next) {
   this.isDeleted = false;
   this.isActive = true;
+  this.isPremium = false;
   if (this.password) {
     this.password = await bcrypt.hash(this.password, 8);
   }
@@ -153,6 +160,7 @@ schema.pre('insertMany', async (next, docs) => {
       const element = docs[index];
       element.isDeleted = false;
       element.isActive = true;
+      this.isPremium = false;
     }
   }
   next();

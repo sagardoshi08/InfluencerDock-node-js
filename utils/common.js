@@ -106,6 +106,23 @@ async function uniqueSubscribersValidation (Model, data) {
   return true;
 }
 
+async function uniqueViewsValidation (Model, data) {
+  let filter = {};
+  if (data && data.username && data.session_id) {
+    filter = {
+      username: data.username,
+      session_id: data.session_id,
+    };
+  }
+  filter.isActive = true;
+  filter.isDeleted = false;
+  const found = await dbService.getDocumentByQuery(Model, filter);
+  if (found) {
+    return false;
+  }
+  return true;
+}
+
 function getKeyByValue (obj, value) {
   return Object.keys(obj).find((key) => obj[key] === value) || null; // or undefined if the key is not found
 }
@@ -181,5 +198,6 @@ module.exports = {
   getKeyByValue,
   uniqueSubscribersValidation,
   uniqueEmailValidation,
-  uniqueUsernameValidation
+  uniqueUsernameValidation,
+  uniqueViewsValidation,
 };

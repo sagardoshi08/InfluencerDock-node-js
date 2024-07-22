@@ -21,7 +21,7 @@ async function seedUser () {
     userToBeInserted = {
       password: 'U8IMufLszzHKHCa',
       email: 'sagardoshi72427@gmail.com',
-      role: authConstant.USER_ROLE.User,
+      role: authConstant.USER_ROLE.Admin,
       username: 'sagar1',
     };
     userToBeInserted.password = await bcrypt.hash(userToBeInserted.password, 8);
@@ -499,6 +499,66 @@ async function seedRouteRole () {
         method: 'PUT',
       },
       {
+        route: '/admin/views/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/views/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/views/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/admin/views/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/views/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/views/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/views/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/views/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/views/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/views/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/views/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/views/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
         route: '/client/api/v1/user/create',
         role: 'User',
         method: 'POST',
@@ -878,7 +938,66 @@ async function seedRouteRole () {
         role: 'SYSTEM_USER',
         method: 'PUT',
       },
-
+      {
+        route: '/client/api/v1/views/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/views/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/views/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/client/api/v1/views/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/views/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/views/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/views/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/views/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/views/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/views/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/views/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/views/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
     ];
     if (routeRoles && routeRoles.length) {
       const routes = [...new Set(routeRoles.map((routeRole) => routeRole.route.toLowerCase()))];

@@ -8,6 +8,7 @@ const express = require('express');
 const router = express.Router();
 router.use('/client/auth', require('./auth'));
 router.use(require('./partnerRoutes'));
+router.use(require('./viewsRoutes'));
 router.use(require('./contactRoutes'));
 router.use(require('./subscribersRoutes'));
 router.use(require('./userRoutes'));
