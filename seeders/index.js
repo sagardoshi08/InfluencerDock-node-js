@@ -559,6 +559,66 @@ async function seedRouteRole () {
         method: 'PUT',
       },
       {
+        route: '/admin/myfavourites/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/myfavourites/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/myfavourites/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/admin/myfavourites/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/myfavourites/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/myfavourites/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/myfavourites/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/myfavourites/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/myfavourites/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/myfavourites/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/myfavourites/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/myfavourites/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
         route: '/client/api/v1/user/create',
         role: 'User',
         method: 'POST',
@@ -995,6 +1055,66 @@ async function seedRouteRole () {
       },
       {
         route: '/client/api/v1/views/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/myfavourites/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/myfavourites/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/myfavourites/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/client/api/v1/myfavourites/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/myfavourites/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/myfavourites/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/myfavourites/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/myfavourites/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/myfavourites/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/myfavourites/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/myfavourites/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/myfavourites/updatebulk',
         role: 'SYSTEM_USER',
         method: 'PUT',
       },
