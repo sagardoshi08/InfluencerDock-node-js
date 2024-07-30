@@ -303,6 +303,43 @@ const getLoggedInUserInfo = async (req, res) => {
   }
 };
 
+/**
+ * @description : find document of User from table by id;
+ * @param {object} req : request including id in request params.
+ * @param {object} res : response contains document retrieved from table.
+ * @return {object} : found User. {status, message, data}
+ */
+const getPopularUserLocation = async (req, res) => {
+  try {
+    const aggregateArry = [
+      {
+        $match: {
+          role: 1,
+          isActive: true,
+          city: { $ne: null },
+        },
+      },
+      {
+        $group: {
+          _id: '$city',
+          count: { $sum: 1 },
+          latitude: { $first: '$latitude' },
+          longitude: { $first: '$longitude' },
+        },
+      },
+      { $sort: { count: -1 } },
+      { $limit: 5 },
+    ];
+    const result = await dbService.aggregateDocument(User, aggregateArry);
+    if (!result) {
+      return res.recordNotFound();
+    }
+    return res.success({ data: result });
+  } catch (error) {
+    return res.internalServerError({ message: error.message });
+  }
+};
+
 module.exports = {
   addUser,
   updateUser,
@@ -313,4 +350,5 @@ module.exports = {
   changePassword,
   updateProfile,
   getLoggedInUserInfo,
+  getPopularUserLocation,
 };

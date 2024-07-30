@@ -16,6 +16,7 @@ router.route('/client/api/v1/user/update/:id').put(auth(PLATFORM.CLIENT), checkR
 router.route('/client/api/v1/user/partial-update/:id').put(auth(PLATFORM.CLIENT), checkRolePermission, userController.partialUpdateUser);
 router.route('/client/api/v1/user/list').post(userController.findAllUser);
 router.route('/client/api/v1/user/me').get(auth(PLATFORM.CLIENT), userController.getLoggedInUserInfo);
+router.route('/client/api/v1/user/popular-user-location').get(userController.getPopularUserLocation);
 router.route('/client/api/v1/user/:username').get(userController.getUser);
 // router.route('/client/api/v1/user/:id').get(auth(PLATFORM.CLIENT), checkRolePermission, userController.getUser);
 router.route('/client/api/v1/user/count').post(auth(PLATFORM.CLIENT), checkRolePermission, userController.getUserCount);

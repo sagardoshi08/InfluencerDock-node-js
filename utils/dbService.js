@@ -253,6 +253,19 @@ const findAllDocuments = (model, filter = {}, options = {}) => new Promise((reso
   });
 });
 
+/*
+ * @description : aggregate  mongoose document
+ * @param  {object} model : mongoose model
+ * @param  {array} aggregateArray : mongoose aggregate array
+ * @return Promise
+ */
+const aggregateDocument = (model, aggregateArray) => new Promise((resolve, reject) => {
+  model.aggregate(aggregateArray, (err, data) => {
+    if (err) reject(err);
+    else resolve(data);
+  });
+});
+
 module.exports = {
   createDocument,
   getAllDocuments,
@@ -269,4 +282,5 @@ module.exports = {
   findOneAndDeleteDocument,
   deleteMany,
   findAllDocuments,
+  aggregateDocument,
 };
