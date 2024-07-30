@@ -27,6 +27,19 @@ const myCustomLabels = {
 };
 mongoosePaginate.paginate.options = { customLabels: myCustomLabels };
 const { Schema } = mongoose;
+
+const locationSchema = new mongoose.Schema({
+  type: {
+    type: String,
+    enum: ['Point'], // 'type' must be 'Point'
+    required: true,
+  },
+  coordinates: {
+    type: [Number], // 'coordinates' must be an array of numbers
+    required: true,
+  },
+});
+
 const schema = new Schema(
   {
 
@@ -60,9 +73,9 @@ const schema = new Schema(
 
     country: { type: String },
 
-    latitude: { type: String },
+    latitude: { type: Number },
 
-    longitude: { type: String },
+    longitude: { type: Number },
 
     avatar: { type: String },
 
@@ -94,7 +107,7 @@ const schema = new Schema(
       twitter: String,
       telegram: String,
     },
-
+    location: { type: locationSchema },
     isActive: { type: Boolean },
 
     isPremium: {

@@ -56,6 +56,10 @@ const register = async (req, res) => {
       ...req.body,
       latitude: googleMapres[0].latitude,
       longitude: googleMapres[0].longitude,
+      location: {
+        type: 'Point',
+        coordinates: [googleMapres[0].longitude, googleMapres[0].latitude],
+      },
     });
     const unique = await uniqueValidation(User, req.body);
     if (!unique) {
@@ -314,5 +318,5 @@ module.exports = {
   login,
   logout,
   checkEmail,
-  checkUsername
+  checkUsername,
 };
