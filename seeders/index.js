@@ -614,6 +614,66 @@ async function seedRouteRole () {
         method: 'POST',
       },
       {
+        route: '/admin/chatrelationship/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/chatrelationship/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/chatrelationship/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/admin/chatrelationship/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/chatrelationship/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/chatrelationship/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/chatrelationship/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/chatrelationship/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/admin/chatrelationship/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/chatrelationship/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/admin/chatrelationship/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/admin/chatrelationship/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
         route: '/admin/myfavourites/updatebulk',
         role: 'SYSTEM_USER',
         method: 'PUT',
@@ -1115,6 +1175,66 @@ async function seedRouteRole () {
       },
       {
         route: '/client/api/v1/myfavourites/updatebulk',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/create',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/list',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/:id',
+        role: 'SYSTEM_USER',
+        method: 'GET',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/count',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/partial-update/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/softdelete/:id',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/softdeletemany',
+        role: 'SYSTEM_USER',
+        method: 'PUT',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/delete/:id',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/deletemany',
+        role: 'SYSTEM_USER',
+        method: 'DELETE',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/addbulk',
+        role: 'SYSTEM_USER',
+        method: 'POST',
+      },
+      {
+        route: '/client/api/v1/chatrelationship/updatebulk',
         role: 'SYSTEM_USER',
         method: 'PUT',
       },
