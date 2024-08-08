@@ -34,6 +34,12 @@ const schema = new Schema(
       ref: 'user',
     },
 
+    lastMessage: { type: String },
+
+    lastMessageTime: { type: Schema.Types.Date },
+
+    unReadMessageCount: { type: Schema.Types.Number },
+
     isDeleted: { type: Boolean },
 
     isActive: { type: Boolean },
@@ -67,17 +73,19 @@ schema.pre('insertMany', async (next, docs) => {
   next();
 });
 
-schema.virtual('userId', {
+schema.virtual('userIdData', {
   ref: 'user',
   localField: 'userId',
   foreignField: '_id',
   justOne: true,
+  options: { select: 'username name last_name isPremium avatar' },
 });
-schema.virtual('receiverId', {
+schema.virtual('receiverIdData', {
   ref: 'user',
   localField: 'receiverId',
   foreignField: '_id',
   justOne: true,
+  options: { select: 'username name last_name isPremium avatar' },
 });
 
 schema.method('toJSON', function () {
